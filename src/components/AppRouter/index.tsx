@@ -1,8 +1,9 @@
-import { Routes, Route } from "react-router-dom";
+import { FC } from "react";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { authRoutes } from "../../routes/authRoutes";
 import { publicRoutes } from "../../routes/publicRoutes";
 
-function index() {
+const AppRouter: FC = () => {
   const isAuth: boolean = false;
 
   return (
@@ -14,8 +15,9 @@ function index() {
         authRoutes.map((route) => {
           return <Route key={route.path} {...route} />;
         })}
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
-}
+};
 
-export default index;
+export default AppRouter;
