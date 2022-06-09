@@ -2,8 +2,8 @@ import React, { FC } from "react";
 
 interface AdminI {}
 
-const index: FC<AdminI> = () => {
+const Admin: FC<AdminI> = () => {
   return <div>Admin</div>;
 };
 
-export default index;
+export default Admin;

@@ -2,8 +2,8 @@ import React, { FC } from "react";
 
 interface BusketI {}
 
-const index: FC<BusketI> = () => {
+const Busket: FC<BusketI> = () => {
   return <div>Busket</div>;
 };
 
-export default index;
+export default Busket;

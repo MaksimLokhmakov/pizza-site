@@ -2,8 +2,8 @@ import React, { FC } from "react";
 
 interface ShopI {}
 
-const index: FC<ShopI> = () => {
+const Shop: FC<ShopI> = () => {
   return <div>Shop</div>;
 };
 
-export default index;
+export default Shop;
