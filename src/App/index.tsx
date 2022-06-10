@@ -4,9 +4,11 @@ import "./app-default.scss";
 
 function App() {
   return (
-    <BrowserRouter>
-      <AppRouter />
-    </BrowserRouter>
+    <div className="App">
+      <BrowserRouter>
+        <AppRouter />
+      </BrowserRouter>
+    </div>
   );
 }
 
