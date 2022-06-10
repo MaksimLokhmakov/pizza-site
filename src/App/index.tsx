@@ -1,10 +1,11 @@
 import { BrowserRouter } from "react-router-dom";
-import { AppRouter } from "../components";
+import { AppRouter, Header } from "../components";
 import "./app-default.scss";
 
 function App() {
   return (
     <div className="App">
+      <Header />
       <BrowserRouter>
         <AppRouter />
       </BrowserRouter>
