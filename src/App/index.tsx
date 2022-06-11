@@ -5,8 +5,8 @@ import "./app-default.scss";
 function App() {
   return (
     <div className="App">
-      <Header />
       <BrowserRouter>
+        <Header />
         <AppRouter />
       </BrowserRouter>
     </div>
