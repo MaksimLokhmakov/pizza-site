@@ -3,9 +3,8 @@
   height: auto;
   border: 0;
   background: transparent;
-  cursor: pointer;
 
-  padding: 0.8vw 2vw;
+  padding: 0.8vw 1.5vw;
   border-radius: 30px;
   display: flex;
   align-items: center;
@@ -13,17 +12,20 @@
   font-family: Proxima Nova Light;
   font-weight: 700;
   font-size: 1.3vw;
+  cursor: pointer;
+
+  span {
+    margin: 0 0.5vw;
+  }
 
   img {
     width: 1vw;
     height: 1vw;
-    margin-right: 0.5vw;
   }
 
   svg {
     width: 1vw;
     height: 1vw;
-    margin-right: 0.5vw;
   }
 }
 
@@ -76,4 +78,14 @@
 .colloring-dark {
   background-color: #282828;
   color: #ffffff;
+}
+
+// ? shapes
+.circle {
+  border-radius: 50%;
+  padding: 0.8vw 0.8vw;
+  border-width: 2px;
+
+  &:hover {
+  }
 }

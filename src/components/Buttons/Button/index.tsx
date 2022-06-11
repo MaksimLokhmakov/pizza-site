@@ -9,14 +9,28 @@ export enum ButtonTheme {
   COLLORING_DARK = "colloring-dark",
 }
 
+export enum ButtonShape {
+  CIRCLE = "circle",
+}
+
 interface ButtonProps {
   children: ReactNode;
   theme: ButtonTheme;
-  onClick?: () => void;
+  shape?: ButtonShape;
+  onClick: () => void;
 }
 
-const Button: FC<ButtonProps> = ({ children, theme, onClick }) => {
-  return <button className={["button", theme].join(" ")}>{children}</button>;
+const Button: FC<ButtonProps> = ({ children, theme, shape, onClick }) => {
+  const handleClick = () => onClick();
+
+  return (
+    <button
+      onClick={handleClick}
+      className={["button", theme, shape].join(" ")}
+    >
+      {children}
+    </button>
+  );
 };
 
 export default Button;
