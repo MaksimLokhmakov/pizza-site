@@ -1,22 +1,21 @@
-import { RouteI } from "../interfaces";
+import IRoute, { Routes } from "../interfaces/IRoute";
 import { Auth, Product, Shop } from "../pages";
-import { routes } from "../utils/consts/routes";
 
-export const publicRoutes: RouteI[] = [
+export const publicRoutes: IRoute[] = [
   {
-    path: routes.LOGIN_ROUTE,
+    path: Routes.LOGIN_ROUTE,
     element: <Auth />,
   },
   {
-    path: routes.REGISTRATION_ROUTE,
+    path: Routes.REGISTRATION_ROUTE,
     element: <Auth />,
   },
   {
-    path: routes.SHOP_ROUTE,
+    path: Routes.SHOP_ROUTE,
     element: <Shop />,
   },
   {
-    path: routes.PRODUCT_ROUTE + "/:id",
+    path: Routes.PRODUCT_ROUTE,
     element: <Product />,
   },
 ];

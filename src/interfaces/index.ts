@@ -1,1 +1,1 @@
-export type { default as RouteI } from "./RouteI";
+export type { default as RouteI } from "./IRoute";

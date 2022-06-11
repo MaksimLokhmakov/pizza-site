@@ -1,18 +1,17 @@
-import { RouteI } from "../interfaces";
+import IRoute, { Routes } from "../interfaces/IRoute";
 import { Admin, Busket, Favorites } from "../pages";
-import { routes } from "../utils/consts/routes";
 
-export const authRoutes: RouteI[] = [
+export const authRoutes: IRoute[] = [
   {
-    path: routes.ADMIN_ROUTE,
+    path: Routes.ADMIN_ROUTE,
     element: <Admin />,
   },
   {
-    path: routes.BASKET_ROUTE,
+    path: Routes.BASKET_ROUTE,
     element: <Busket />,
   },
   {
-    path: routes.FAVORITES_ROUTE,
+    path: Routes.FAVORITES_ROUTE,
     element: <Favorites />,
   },
 ];
