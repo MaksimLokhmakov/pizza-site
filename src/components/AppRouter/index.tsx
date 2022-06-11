@@ -4,7 +4,7 @@ import { authRoutes } from "../../routes/authRoutes";
 import { publicRoutes } from "../../routes/publicRoutes";
 
 const AppRouter: FC = () => {
-  const isAuth: boolean = false;
+  const isAuth: boolean = true;
 
   return (
     <Routes>

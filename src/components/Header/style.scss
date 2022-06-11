@@ -1,8 +1,33 @@
 .header {
+  position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 5vw;
+  height: auto;
+  padding: 0 0 4vh 0;
+  margin: 0 0 4vh 0;
   background-color: #fff;
+  transition-duration: 200ms;
+
+  &__left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 3vw;
+      height: 3vw;
+      margin-right: 1vw;
+    }
+  }
+
+  &__ceparator {
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    left: -5%;
+    width: 110%;
+    background: #f7f7f7;
+  }
 }
