@@ -1,5 +1,5 @@
-import IRoute, { Routes } from "../interfaces/IRoute";
-import { Admin, Busket, Favorites } from "../pages";
+import IRoute, { Routes } from "../../interfaces/IRoute";
+import { Admin, Busket, Favorites } from "../../pages";
 
 export const authRoutes: IRoute[] = [
   {

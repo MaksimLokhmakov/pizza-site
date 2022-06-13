@@ -5,7 +5,7 @@ interface ShopI {}
 
 const Shop: FC<ShopI> = () => {
   return (
-    <div>
+    <div className="shop" >
       <SortMenu />
     </div>
   );

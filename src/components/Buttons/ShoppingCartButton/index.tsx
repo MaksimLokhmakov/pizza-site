@@ -1,4 +1,4 @@
-import React, { FC, memo } from "react";
+import { FC } from "react";
 import { ButtonTheme } from "../Button";
 import Button from "../Button";
 import arrowAlt from "../../../assets/icons/arrow_right_alt_FILL0_wght400_GRAD0_opsz48.svg";

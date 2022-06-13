@@ -1,6 +1,7 @@
 import { FC, useRef, useState } from "react";
 import useHover from "../../hooks/useHover";
 import arrowDownIcon from "../../assets/icons/Vector.svg";
+import { sortTypes } from "../../utils/consts/consts";
 import "./style.scss";
 
 interface ISelectSort {
@@ -12,9 +13,7 @@ const SelectSort: FC<ISelectSort> = ({
   currentSortType,
   setCurrentSortType,
 }) => {
-  const sortedTypes = ["популярности", "цене", "алфавиту"];
-
-  const [sortType, setSortType] = useState<string>("популярности");
+  const [sortType, setSortType] = useState<string>("");
   const sortMenuRef = useRef(null);
   const isHover = useHover(sortMenuRef);
 
@@ -32,7 +31,7 @@ const SelectSort: FC<ISelectSort> = ({
       {isHover && (
         <div className="menu__sort-select">
           <ul>
-            {sortedTypes.map((type) => (
+            {sortTypes.map((type) => (
               <li key={type} onClick={() => onTypeClick(type)}>
                 {type}
               </li>

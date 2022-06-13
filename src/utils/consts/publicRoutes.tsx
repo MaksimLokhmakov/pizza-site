@@ -1,5 +1,5 @@
-import IRoute, { Routes } from "../interfaces/IRoute";
-import { Auth, Product, Shop } from "../pages";
+import IRoute, { Routes } from "../../interfaces/IRoute";
+import { Auth, Product, Shop } from "../../pages";
 
 export const publicRoutes: IRoute[] = [
   {

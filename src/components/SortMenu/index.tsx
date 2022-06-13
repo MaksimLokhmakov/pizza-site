@@ -1,21 +1,13 @@
 import Button, { ButtonTheme } from "../Buttons/Button";
 import SelectSort from "../SelectSort";
+import { filterTypes } from "../../utils/consts/consts";
 import "./style.scss";
 
 const SortMenu = () => {
-  const filtretionTypes = [
-    "Все",
-    "Мясные",
-    "Вегетарианская",
-    "Гриль",
-    "Острые",
-    "Закрытые",
-  ];
-
   return (
     <section className="menu">
       <div className="menu__filtretion">
-        {filtretionTypes.map((type) => (
+        {filterTypes.map((type) => (
           <Button
             key={type}
             onClick={() => console.log(type)}
