@@ -3,13 +3,15 @@ import { AppRouter, Header } from "../components";
 import "./app-default.scss";
 
 function App() {
+  console.log("app render");
+
   return (
-    <div className="App">
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="App">
         <Header />
         <AppRouter />
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 

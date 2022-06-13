@@ -12,6 +12,7 @@
   font-family: Proxima Nova Light;
   font-weight: 700;
   font-size: 1.3vw;
+  transition-duration: 100ms;
   cursor: pointer;
 
   span {
@@ -86,6 +87,6 @@
   padding: 0.8vw 0.8vw;
   border-width: 2px;
 
-  &:hover {
-  }
+  // &:hover {
+  // }
 }
