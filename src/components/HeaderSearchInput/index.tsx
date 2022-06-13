@@ -1,6 +1,6 @@
 import { FC } from "react";
-import useInput from "../../hooks/useInput";
 import searchIcon from "../../assets/icons/search_FILL0_wght400_GRAD0_opsz48.svg";
+import { useInput } from "../../hooks";
 import "./style.scss";
 
 const HeaderSearchInput: FC = () => {

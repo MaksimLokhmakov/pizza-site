@@ -1,6 +1,6 @@
 import { FC, useRef, useState } from "react";
-import useHover from "../../hooks/useHover";
 import arrowDownIcon from "../../assets/icons/Vector.svg";
+import { useHover } from "../../hooks";
 import { sortTypes } from "../../utils/consts/consts";
 import "./style.scss";
 
