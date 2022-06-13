@@ -1,0 +1,11 @@
+.menu {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+
+  &__filtretion {
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+  }
+}

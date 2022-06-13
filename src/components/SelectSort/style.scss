@@ -1,0 +1,62 @@
+.menu {
+  &__sort {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 0.8vw;
+      height: 0.8vw;
+      transition-duration: 200ms;
+    }
+
+    span {
+      display: flex;
+      font-size: 1.3vw;
+      margin-left: 0.5vw;
+
+      p {
+        margin-left: 0.5vw;
+        color: #fe5f1e;
+        font-family: Proxima Nova Thin;
+        font-size: 1.3vw;
+        text-decoration: underline dotted;
+      }
+    }
+
+    &:hover {
+      img {
+        transform: rotate(180deg);
+      }
+    }
+
+    &-select {
+      position: absolute;
+      top: 3vw;
+      left: 68.3vw;
+      width: auto;
+      padding: 1vw 0;
+      font-family: Proxima Nova Thin;
+      font-size: 1.3vw;
+
+      background: #ffffff;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+      border-radius: 10px;
+
+      ul {
+        li {
+          display: flex;
+          align-items: center;
+          text-align: start;
+          height: 3vw;
+          padding: 0 1vw;
+          cursor: pointer;
+
+          &:hover {
+            background: rgba(254, 95, 30, 0.05);
+            color: #fe5f1e;
+          }
+        }
+      }
+    }
+  }
+}
