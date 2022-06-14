@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useNavigation } from "../../hooks";
 import ShoppingCartButton from "../Buttons/ShoppingCartButton";
-import HeaderSearchInput from "../HeaderSearchInput";
+import HeaderSearchInput from "./HeaderSearchInput";
 import { Routes } from "../../interfaces/IRoute";
 import logo from "../../assets/images/logo.svg";
 import "./style.scss";
