@@ -7,6 +7,7 @@ export enum ButtonTheme {
   COLLORING_LIGHT = "colloring-light",
   COLLORING_GRAY = "colloring-gray",
   COLLORING_DARK = "colloring-dark",
+  COLLORING_LIGHT_DEEP = "colloring-light-deep",
 }
 
 export enum ButtonShape {

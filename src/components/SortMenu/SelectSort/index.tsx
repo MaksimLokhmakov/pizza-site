@@ -1,7 +1,7 @@
 import { FC, useRef, useState } from "react";
-import arrowDownIcon from "../../assets/icons/Vector.svg";
-import { useHover } from "../../hooks";
-import { sortTypes } from "../../utils/consts/consts";
+import arrowDownIcon from "../../../assets/icons/Vector.svg";
+import { useHover } from "../../../hooks";
+import { sortTypes } from "../../../utils/consts/consts";
 import "./style.scss";
 
 interface ISelectSort {

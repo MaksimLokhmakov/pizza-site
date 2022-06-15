@@ -15,7 +15,7 @@ const ShoppingCartButton: FC<ShoppingCartButtonProps> = ({ onClick }) => {
   console.log("ShoppingCartButtonProps render");
 
   return (
-    <Button theme={ButtonTheme.COLLORING_LIGHT} onClick={handleClick}>
+    <Button theme={ButtonTheme.COLLORING_LIGHT_DEEP} onClick={handleClick}>
       <div className="cart">
         <span>520 руб.</span>
         <div className="cart-separator" />
