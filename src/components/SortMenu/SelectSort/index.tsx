@@ -17,10 +17,6 @@ const SelectSort: FC<ISelectSort> = ({
   const sortMenuRef = useRef(null);
   const isHover = useHover(sortMenuRef);
 
-  const onTypeClick = (type: string) => {
-    setSortType(type);
-  };
-
   return (
     <div ref={sortMenuRef} className="menu__sort">
       <img src={arrowDownIcon} alt="arrowDownIcon" />
@@ -32,7 +28,7 @@ const SelectSort: FC<ISelectSort> = ({
         <div className="menu__sort-select">
           <ul>
             {sortTypes.map((type) => (
-              <li key={type} onClick={() => onTypeClick(type)}>
+              <li key={type} onClick={() => setSortType(type)}>
                 {type}
               </li>
             ))}
