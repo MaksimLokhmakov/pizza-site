@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { authRoutes } from "../../utils/consts/authRoutes";
-import { publicRoutes } from "../../utils/consts/publicRoutes";
+import { authRoutes, publicRoutes } from "../../utils/consts/routes";
 
 const AppRouter: FC = () => {
   const isAuth: boolean = true;
