@@ -4,12 +4,12 @@ import { useHover } from "../../../hooks";
 import { sortTypes } from "../../../utils/consts/consts";
 import "./style.scss";
 
-interface ISelectSort {
+interface SelectSortProps {
   currentSortType?: string;
   setCurrentSortType?: () => void;
 }
 
-const SelectSort: FC<ISelectSort> = ({
+const SelectSort: FC<SelectSortProps> = ({
   currentSortType,
   setCurrentSortType,
 }) => {

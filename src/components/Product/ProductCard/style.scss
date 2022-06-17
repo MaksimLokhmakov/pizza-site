@@ -15,8 +15,6 @@ article.product {
 
     img {
       transition-duration: 200ms;
-      margin-top: 1vw;
-      margin-left: 1vw;
       width: 16.5vw;
       height: 16.5vw;
     }
@@ -38,4 +36,9 @@ article.product {
       font-size: 1.4vw;
     }
   }
+}
+
+.img-m {
+  margin-top: 1vw;
+  margin-left: 1vw;
 }

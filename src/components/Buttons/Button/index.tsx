@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { FC, memo, ReactNode } from "react";
 import "./style.scss";
 
 export enum ButtonTheme {
@@ -18,11 +18,11 @@ interface ButtonProps {
   children: ReactNode;
   theme: ButtonTheme;
   shape?: ButtonShape;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Button: FC<ButtonProps> = ({ children, theme, shape, onClick }) => {
-  const handleClick = () => onClick();
+  const handleClick = () => onClick && onClick();
 
   return (
     <button
@@ -34,4 +34,4 @@ const Button: FC<ButtonProps> = ({ children, theme, shape, onClick }) => {
   );
 };
 
-export default Button;
+export default memo(Button);

@@ -8,7 +8,7 @@ const SortMenu = () => {
     <section className="menu">
       <ul className="menu__filtretion">
         {filterTypes.map((type) => (
-          <li>
+          <li key={type}>
             <Button
               key={type}
               onClick={() => console.log(type)}

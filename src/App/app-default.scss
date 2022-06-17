@@ -55,7 +55,6 @@ body {
   font-size: 2vw;
   font-weight: normal;
   font-family: Proxima Nova Light, sans-serif;
-  position: relative;
   margin: 5vw;
   background-color: #ffdf8c;
 }
@@ -81,4 +80,12 @@ body {
 
 .sp-b {
   justify-content: space-between;
+}
+
+.oh {
+  overflow: hidden;
+}
+
+.dn {
+  display: none;
 }

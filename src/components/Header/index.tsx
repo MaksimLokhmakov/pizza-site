@@ -18,7 +18,7 @@ const Header: FC = () => {
   };
 
   return (
-    <div className="header">
+    <header className="header">
       <div className="header__left">
         <img src={logo} alt="logo" onClick={navigateToShopPage} />
         <div>
@@ -33,7 +33,7 @@ const Header: FC = () => {
         <ShoppingCartButton onClick={navigateToShoppingCart} />
       )}
       <div className="header__ceparator" />
-    </div>
+    </header>
   );
 };
 

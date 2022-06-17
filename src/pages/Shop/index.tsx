@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { SortMenu, ProductBlock } from "../../components";
+import { SortMenu, Product } from "../../components";
 import "./style.scss";
 
 import pizzaImg from "../../assets/images/711b5f74b1ad419f9c4e61784474fa1d_760x760.jpeg";
@@ -57,9 +57,9 @@ const Shop: FC<ShopI> = () => {
       <SortMenu />
       <main className="shop">
         <h1 className="shop__section-name">Пицца</h1>
-        <section className="df" >
-          {pizzas.map((pizza) => (
-            <ProductBlock />
+        <section className="df">
+          {pizzas.map((pizza, index) => (
+            <Product key={index} />
           ))}
         </section>
       </main>
