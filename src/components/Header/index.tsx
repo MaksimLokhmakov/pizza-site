@@ -8,6 +8,7 @@ import "./style.scss";
 
 const Header: FC = () => {
   const { navigateTo, currentRoute } = useNavigation();
+  const isBasketRoute = currentRoute === Routes.BASKET_ROUTE;
 
   const navigateToShoppingCart = () => {
     navigateTo(Routes.BASKET_ROUTE);
@@ -29,7 +30,7 @@ const Header: FC = () => {
 
       <HeaderSearchInput />
 
-      {currentRoute !== Routes.BASKET_ROUTE && (
+      {!isBasketRoute && (
         <ShoppingCartButton onClick={navigateToShoppingCart} />
       )}
       <div className="header__ceparator" />
