@@ -18,16 +18,23 @@ interface ButtonProps {
   children: ReactNode;
   theme: ButtonTheme;
   shape?: ButtonShape;
+  active?: boolean;
   onClick?: () => void;
 }
 
-const Button: FC<ButtonProps> = ({ children, theme, shape, onClick }) => {
+const Button: FC<ButtonProps> = ({
+  children,
+  theme,
+  shape,
+  active,
+  onClick,
+}) => {
   const handleClick = () => onClick && onClick();
 
   return (
     <button
       onClick={handleClick}
-      className={["button", theme, shape].join(" ")}
+      className={["button", theme, shape, active ? "active" : ""].join(" ")}
     >
       {children}
     </button>
