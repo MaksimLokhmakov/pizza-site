@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 
 export default function useEffectSkipMount(
   callback: () => void,
-  dependencies: []
+  dependencies: any[]
 ) {
   const isMounted = useRef(true);
 

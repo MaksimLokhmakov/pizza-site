@@ -1,4 +1,5 @@
 import { IOption } from "../../components/OptionBar";
+import { PizzaSize, PizzaDough } from "../../interfaces/IPizza";
 
 export const sortTypes = ["популярности", "цене", "алфавиту"];
 
@@ -14,13 +15,13 @@ export const filterTypes = [
 export const optionBarPizzaDoughOptions: IOption[] = [
   {
     name: "Традиционное",
-    value: "традиционное",
+    value: PizzaDough.TRADITIONAL,
   },
-  { name: "Тонкое", value: "тонкое" },
+  { name: "Тонкое", value: PizzaDough.THIN, disabled: true },
 ];
 
 export const optionBarPizzaSizeOptions: IOption[] = [
-  { name: "Маленькая", value: 25 },
-  { name: "Средняя", value: 30 },
-  { name: "Большая", value: 35 },
+  { name: "Маленькая", value: PizzaSize.SMALL },
+  { name: "Средняя", value: PizzaSize.MEDIUM },
+  { name: "Большая", value: PizzaSize.BIG },
 ];

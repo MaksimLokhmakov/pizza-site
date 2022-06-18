@@ -6,10 +6,10 @@
 //   CLOSED = "закрытая",
 // }
 
-// export enum PizzaDough {
-//   THIN = "тонкое",
-//   TRADITIONAL = "традиционное",
-// }
+export enum PizzaDough {
+  THIN = "тонкое",
+  TRADITIONAL = "традиционное",
+}
 
 export enum PizzaSize {
   SMALL = 25,
@@ -21,7 +21,7 @@ export default interface IPizza {
   id: string;
   type: string;
   name: string;
-  dough: string;
+  dough: PizzaDough | string;
   minWeight: number;
   size: PizzaSize;
   price: number;
