@@ -23,7 +23,7 @@ const Product = () => {
           id: "0bc9a360-77b7-4675-a03e-506e3e3445a8",
           type: "мясная",
           name: "Маргарита",
-          dough: "тонкое",
+          dough: "традиционное",
           minWeight: 430,
           size: 25,
           price: 17.9,
