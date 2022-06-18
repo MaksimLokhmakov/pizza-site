@@ -1,5 +1,5 @@
 import { FC, useCallback, useMemo, useState } from "react";
-import IPizza from "../../../interfaces/IPizza";
+import IPizza, { PizzaDough, PizzaSize } from "../../../interfaces/IPizza";
 import { getPizzaImgClass } from "../../../utils/getPizzaImgClass";
 import Button, { ButtonTheme } from "../../Buttons/Button";
 import Popup from "../../Popup";
@@ -43,6 +43,22 @@ const ProductInfoModal: FC<ProductInfoModalProps> = ({
     return `Добавить в корзину за ${price} руб.`;
   }, [price]);
 
+  const optionBarPizzaDoughCurrentOptions = useMemo(() => {
+    const isSmallSize = size === PizzaSize.SMALL;
+
+    return optionBarPizzaDoughOptions.map((option) => {
+      const isThinDough = option.value === PizzaDough.THIN;
+
+      if (isThinDough && isSmallSize) {
+        option.disabled = true;
+      } else {
+        option.disabled = false;
+      }
+
+      return option;
+    });
+  }, [size]);
+
   return (
     <Popup isOpened={isOpened} onClose={onClose}>
       <div className="form df">
@@ -76,7 +92,7 @@ const ProductInfoModal: FC<ProductInfoModalProps> = ({
               barName="dough"
               currentOption={dough}
               onChange={handleChangeDough}
-              options={optionBarPizzaDoughOptions}
+              options={optionBarPizzaDoughCurrentOptions}
             />
           </main>
 
