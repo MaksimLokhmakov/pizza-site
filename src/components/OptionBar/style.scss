@@ -1,10 +1,13 @@
+$border-radius: 9999px;
+$duration: 200ms;
+
 .wrapper {
   position: relative;
   width: 100%;
   height: 2vw;
   margin: 0.5vw 0;
   padding: 0.13vw;
-  border-radius: 9999px;
+  border-radius: $border-radius;
   overflow: hidden;
   background-color: #f3f3f7;
 
@@ -16,9 +19,9 @@
     width: 100%;
     height: 100%;
     font-size: 0.9vw;
-    border-radius: 9999px;
+    border-radius: $border-radius;
     cursor: pointer;
-    transition-duration: 200ms;
+    transition-duration: $duration;
     z-index: 1;
   }
 
@@ -28,7 +31,7 @@
     height: 90%;
     background-color: #ffffff;
     box-shadow: 0px 0px 30px 5px rgba(34, 60, 80, 0.05);
-    border-radius: 9999px;
-    transition-duration: 200ms;
+    border-radius: $border-radius;
+    transition-duration: $duration;
   }
 }

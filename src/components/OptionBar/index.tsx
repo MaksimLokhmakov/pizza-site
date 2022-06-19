@@ -48,7 +48,7 @@ const OptionBar: FC<OptionBarProps> = ({
   return (
     <div className="wrapper df">
       {options.map(({ value, name, disabled }, index) => {
-        const id = name;
+        const id = Math.random().toString();
         const checked = currentOption === value;
         const isLastElement = options.length - 1 === index;
 
