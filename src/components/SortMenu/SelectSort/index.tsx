@@ -1,34 +1,33 @@
-import { FC, memo, useRef, useState } from "react";
-import arrowDownIcon from "../../../assets/icons/Vector.svg";
+import { useContext, useRef } from "react";
+import { observer } from "mobx-react-lite";
 import { useHover } from "../../../hooks";
-import { sortTypes } from "../../../utils/consts/consts";
+import { Context } from "../../..";
+import { SortType } from "../../../utils/consts/consts";
+import arrowDownIcon from "../../../assets/icons/Vector.svg";
 import "./style.scss";
 
-interface SelectSortProps {
-  currentSortType?: string;
-  setCurrentSortType?: () => void;
-}
-
-const SelectSort: FC<SelectSortProps> = ({
-  currentSortType,
-  setCurrentSortType,
-}) => {
-  const [sortType, setSortType] = useState<string>("");
+const SelectSort = observer(() => {
+  const { selectionStore } = useContext(Context);
+  const { sortType } = selectionStore;
   const sortMenuRef = useRef(null);
   const isHover = useHover(sortMenuRef);
+
+  const handleChangeSortType = (currentType: SortType) => {
+    selectionStore.setSortType(currentType);
+  };
 
   return (
     <div ref={sortMenuRef} className="menu__sort">
       <img src={arrowDownIcon} alt="arrowDownIcon" />
       <span>
-        Сортировка по: <p>{sortType}</p>
+        Сортировка: <p>{sortType}</p>
       </span>
 
       {isHover && (
         <div className="menu__sort-select">
           <ul>
-            {sortTypes.map((type) => (
-              <li key={type} onClick={() => setSortType(type)}>
+            {Object.values(SortType).map((type) => (
+              <li key={type} onClick={() => handleChangeSortType(type)}>
                 {type}
               </li>
             ))}
@@ -37,6 +36,6 @@ const SelectSort: FC<SelectSortProps> = ({
       )}
     </div>
   );
-};
+});
 
-export default memo(SelectSort);
+export default SelectSort;

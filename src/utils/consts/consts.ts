@@ -1,16 +1,23 @@
 import { IOption } from "../../components/OptionBar";
 import { PizzaSize, PizzaDough } from "../../interfaces/IPizza";
 
-export const sortTypes = ["популярности", "цене", "алфавиту"];
+export const sortTypes = ["Популярности", "цене", "алфавиту"];
 
-export const filterTypes = [
-  "Все",
-  "Мясные",
-  "Вегетарианская",
-  "Гриль",
-  "Острые",
-  "Закрытые",
-];
+export enum SortType {
+  DEFAULT = "Отсутствует",
+  POPULARITY = "Популярность",
+  PRICE = "Цена",
+  ALPHABET = "Алфавит",
+}
+
+export enum FiltrationType {
+  ALL = "Все",
+  MEAT = "Мясные",
+  VEGETARIAN = "Вегетерианские",
+  GRILL = "Гриль",
+  SPICY = "Острые",
+  CLOSED = "Закрытые",
+}
 
 export const optionBarPizzaDoughOptions: IOption[] = [
   {

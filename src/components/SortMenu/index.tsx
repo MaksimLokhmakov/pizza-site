@@ -1,20 +1,27 @@
-import { useState } from "react";
+import { useContext } from "react";
 import Button, { ButtonTheme } from "../Buttons/Button";
 import SelectSort from "./SelectSort";
-import { filterTypes } from "../../utils/consts/consts";
+import { FiltrationType } from "../../utils/consts/consts";
+import { observer } from "mobx-react-lite";
+import { Context } from "../..";
 import "./style.scss";
 
-const SortMenu = () => {
-  const [filtretionType, setFiltretionType] = useState("Все");
+const SortMenu = observer(() => {
+  const { selectionStore } = useContext(Context);
+  const { filtrationType } = selectionStore;
+
+  const handleChangeFiltrationType = (type: FiltrationType) => {
+    selectionStore.setFiltrationType(type);
+  };
 
   return (
     <section className="menu">
       <ul className="menu__filtretion">
-        {filterTypes.map((type) => {
-          const isFilterActive = filtretionType === type;
+        {Object.values(FiltrationType).map((type) => {
+          const isFilterActive = filtrationType === type;
 
           return (
-            <li key={type} onClick={() => setFiltretionType(type)}>
+            <li key={type} onClick={() => handleChangeFiltrationType(type)}>
               <Button
                 key={type}
                 theme={ButtonTheme.COLLORING_GRAY}
@@ -30,6 +37,6 @@ const SortMenu = () => {
       <SelectSort />
     </section>
   );
-};
+});
 
 export default SortMenu;

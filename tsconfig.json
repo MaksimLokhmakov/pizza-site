@@ -20,7 +20,7 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src"
-, "utils/consts/authRoutes.tsx"  ]
+//   "include": [
+//     "src"
+// , "utils/consts/authRoutes.tsx"  ]
 }

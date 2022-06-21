@@ -12,5 +12,6 @@ export default function useEffectSkipMount(
     }
 
     isMounted.current = false;
+    // eslint-disable-next-line
   }, dependencies);
 }
