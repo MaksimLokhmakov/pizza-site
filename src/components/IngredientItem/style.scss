@@ -1,0 +1,33 @@
+.ingredient-button {
+  position: relative;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-size: 0.85vw;
+  opacity: 0.7;
+  cursor: pointer;
+
+  .ingredient-icon {
+    width: 14px;
+    height: 14px;
+    margin-left: 2px;
+  }
+
+  &.active {
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      bottom: 0px;
+      left: 0px;
+      right: 17px;
+      border-bottom: 1px dashed rgb(92, 99, 112);
+    }
+  }
+
+  &.unactive {
+    text-decoration: line-through;
+  }
+}
