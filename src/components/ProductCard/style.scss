@@ -1,0 +1,44 @@
+article.product {
+  width: 18vw;
+  height: auto;
+  margin: 0 0.75vw 2vw 0.75vw;
+  cursor: pointer;
+
+  &:hover {
+    img {
+      transform: translateY(0.3vw);
+    }
+  }
+
+  main {
+    margin-bottom: 2vw;
+
+    img {
+      transition-duration: 200ms;
+      width: 16.5vw;
+      height: 16.5vw;
+    }
+
+    .product-name {
+      width: 100%;
+      text-align: left;
+      font-size: 1.5vw;
+      padding: 0 0 0.5vw;
+    }
+
+    p {
+      font-size: 1vw;
+    }
+  }
+
+  footer {
+    .product-control-price {
+      font-size: 1.4vw;
+    }
+  }
+}
+
+.img-m {
+  margin-top: 1vw;
+  margin-left: 1vw;
+}
