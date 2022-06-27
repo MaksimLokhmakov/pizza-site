@@ -1,5 +1,6 @@
 import { ChangeEvent, FC, Fragment, memo, useState } from "react";
 import useEffectSkipMount from "../../hooks/useEffectSkipMount";
+// import { PizzaDough, PizzaSize } from "../../interfaces/IPizza";
 import "./style.scss";
 
 export interface IOption {

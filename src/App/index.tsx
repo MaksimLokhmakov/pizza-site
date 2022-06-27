@@ -3,8 +3,6 @@ import { AppRouter, Header } from "../components";
 import "./app-default.scss";
 
 function App() {
-  console.log("app render");
-
   return (
     <BrowserRouter>
       <div className="App">

@@ -29,8 +29,8 @@ export const publicRoutes: IRoute[] = [
     path: Routes.SHOP_ROUTE,
     element: <Shop />,
   },
-  {
-    path: Routes.PRODUCT_ROUTE,
-    element: <Product />,
-  },
+  // {
+  //   path: Routes.PRODUCT_ROUTE,
+  //   element: <Product />,
+  // },
 ];

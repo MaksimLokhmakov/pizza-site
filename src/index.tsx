@@ -2,6 +2,7 @@ import React, { createContext } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App/index";
 import reportWebVitals from "./reportWebVitals";
+import PizzaStore from "./stores/PizzaStore";
 import SelectionStore from "./stores/SelectionStore";
 
 export const Context = createContext<any>(null);
@@ -15,6 +16,7 @@ root.render(
     <Context.Provider
       value={{
         selectionStore: new SelectionStore(),
+        pizzaStore: new PizzaStore(),
       }}
     >
       <App />
