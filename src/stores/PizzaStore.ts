@@ -4,7 +4,14 @@ import IPizza from "../interfaces/IPizza";
 // * temp
 import pizzaImg from "../assets/images/711b5f74b1ad419f9c4e61784474fa1d_760x760.jpeg";
 
-export default class PizzaStore {
+interface IPizzaStore {
+  _pizzas: IPizza[] | null;
+
+  setPizzas: (currentValue: IPizza[]) => void;
+  getPizzaByID: (currentId: string) => IPizza | undefined;
+}
+
+export default class PizzaStore implements IPizzaStore {
   _pizzas: IPizza[] | null;
 
   constructor() {
