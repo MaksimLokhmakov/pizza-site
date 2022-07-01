@@ -1,5 +1,5 @@
 .button {
-  width: auto;
+  width: 100%;
   height: auto;
   border: 0;
   background: transparent;
@@ -65,6 +65,10 @@
 .colloring-light-deep {
   background-color: #fe5f1e;
   color: #ffffff;
+
+  &:hover {
+    background-color: rgb(232, 97, 0);
+  }
 }
 
 .colloring-light {

@@ -31,7 +31,9 @@ const Header: FC = () => {
       <HeaderSearchInput />
 
       {!isBasketRoute && (
-        <ShoppingCartButton onClick={navigateToShoppingCart} />
+        <div>
+          <ShoppingCartButton onClick={navigateToShoppingCart} />
+        </div>
       )}
       <div className="header__ceparator" />
     </header>

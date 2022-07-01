@@ -28,7 +28,9 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
         <footer className="df sp-b">
           <div className="product-control-price">от {fixedPrice} руб.</div>
 
-          <Button theme={ButtonTheme.COLLORING_LIGHT}>Выбрать</Button>
+          <div>
+            <Button theme={ButtonTheme.COLLORING_LIGHT}>Выбрать</Button>
+          </div>
         </footer>
       </article>
     </>
