@@ -1,15 +1,20 @@
-import { IIngredient } from "../../interfaces/IPizza";
+import IPizzaIngredient from "../../interfaces/IPizzaIngredient";
 import deleteIcon from "../../assets/icons/delete.svg";
 import returnIcon from "../../assets/icons/return.svg";
 import "./style.scss";
 import { useState } from "react";
 
 type IngredientItemProps = {
-  ingredient: IIngredient;
+  ingredient: IPizzaIngredient;
   isEditable?: boolean;
+  onClick?: (ingredient: IPizzaIngredient) => void;
 };
 
-const IngredientItem = ({ ingredient, isEditable }: IngredientItemProps) => {
+const IngredientItem = ({
+  ingredient,
+  isEditable,
+  onClick,
+}: IngredientItemProps) => {
   const { name, required } = ingredient;
   const [isActive, setIsActive] = useState(true);
   const currentIcon = isActive ? deleteIcon : returnIcon;
@@ -17,6 +22,7 @@ const IngredientItem = ({ ingredient, isEditable }: IngredientItemProps) => {
 
   const handleClick = () => {
     setIsActive((prev) => !prev);
+    onClick && onClick(ingredient);
   };
 
   if (!isEditable || required) {

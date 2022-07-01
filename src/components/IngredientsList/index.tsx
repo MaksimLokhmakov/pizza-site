@@ -1,17 +1,19 @@
 import { memo } from "react";
-import { IIngredient } from "../../interfaces/IPizza";
+import IPizzaIngredient from "../../interfaces/IPizzaIngredient";
 import ucFirst from "../../utils/ucFirst";
 import IngredientItem from "../IngredientItem";
 import "./style.scss";
 
 type IngredientsListProps = {
-  ingredients: IIngredient[];
+  ingredients: IPizzaIngredient[];
   isEditable?: boolean;
+  onClickIngredient?: (currentIngredient: IPizzaIngredient) => void;
 };
 
 const IngredientsList = ({
   ingredients,
   isEditable = false,
+  onClickIngredient,
 }: IngredientsListProps) => {
   return (
     <>
@@ -31,6 +33,7 @@ const IngredientsList = ({
               key={key}
               ingredient={currentIngredient}
               isEditable={isEditable}
+              onClick={onClickIngredient}
             />
             {!isLast && ", "}
           </>
