@@ -1,0 +1,47 @@
+.addon {
+  position: relative;
+  width: 6.35vw;
+  height: 10vw;
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: 0.3vw;
+  padding: 0.8vw;
+  box-shadow: rgba(6, 5, 50, 0.12) 0px 4px 20px;
+  transition-duration: 200ms;
+  border: 1px solid transparent;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: rgb(6 5 50 / 12%) 0px 0px 8px;
+  }
+
+  &-image {
+    width: 4.5vw;
+    height: 4.5vw;
+  }
+  &-price {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    font-size: 1vw;
+  }
+  &-title {
+    font-size: 0.9vw;
+    font-weight: 500;
+    font-family: Proxima Nova Thin;
+  }
+}
+
+.selected-addon {
+  box-shadow: rgb(6 5 50 / 12%) 0px 0px 0px;
+  border: 1px solid rgb(255, 105, 0);
+  transition-duration: 100ms;
+}
+
+.selected-addon-icon {
+  position: absolute;
+  top: 0.3vw;
+  right: 0.3vw;
+  width: 1.4vw;
+  height: 1.4vw;
+}
