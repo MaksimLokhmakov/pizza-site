@@ -1,10 +1,8 @@
 import { IOption } from "../../components/OptionBar";
-import { PizzaSize, PizzaDough } from "../../interfaces/IPizza";
 
 export const sortTypes = ["Популярности", "цене", "алфавиту"];
 
 export enum SortType {
-  DEFAULT = "Отсутствует",
   POPULARITY = "Популярность",
   PRICE = "Цена",
   ALPHABET = "Алфавит",
@@ -12,23 +10,34 @@ export enum SortType {
 
 export enum FiltrationType {
   ALL = "Все",
-  MEAT = "Мясные",
-  VEGETARIAN = "Вегетерианские",
+  MEAT = "Мясная",
+  VEGETARIAN = "Вегетерианская",
   GRILL = "Гриль",
-  SPICY = "Острые",
-  CLOSED = "Закрытые",
+  SPICY = "Острая",
+  CLOSED = "Закрытая",
+}
+
+export enum PizzaDough {
+  THIN = "тонкое",
+  TRADITIONAL = "традиционное",
+}
+
+export enum PizzaSize {
+  SMALL = 25,
+  MEDIUM = 30,
+  BIG = 35,
 }
 
 export const optionBarPizzaDoughOptions: IOption[] = [
   {
     name: "Традиционное",
-    value: PizzaDough.TRADITIONAL,
+    value: 0,
   },
-  { name: "Тонкое", value: PizzaDough.THIN, disabled: true },
+  { name: "Тонкое", value: 1, disabled: true },
 ];
 
 export const optionBarPizzaSizeOptions: IOption[] = [
-  { name: "Маленькая", value: PizzaSize.SMALL },
-  { name: "Средняя", value: PizzaSize.MEDIUM },
-  { name: "Большая", value: PizzaSize.BIG },
+  { name: "Маленькая", value: 0 },
+  { name: "Средняя", value: 1 },
+  { name: "Большая", value: 2 },
 ];

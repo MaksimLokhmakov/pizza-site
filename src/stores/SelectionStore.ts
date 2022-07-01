@@ -1,7 +1,17 @@
 import { makeAutoObservable } from "mobx";
 import { FiltrationType, SortType } from "../utils/consts/consts";
 
-export default class SelectionStore {
+export interface ISelectionStore {
+  _searchValue: string;
+  _filtrationType: FiltrationType;
+  _sortType: SortType;
+
+  setSearchValue: (currentValue: string) => void;
+  setFiltrationType: (currentType: FiltrationType) => void;
+  setSortType: (currentType: SortType) => void;
+}
+
+export default class SelectionStore implements ISelectionStore {
   _searchValue: string;
   _filtrationType: FiltrationType;
   _sortType: SortType;
@@ -9,7 +19,7 @@ export default class SelectionStore {
   constructor() {
     this._searchValue = "";
     this._filtrationType = FiltrationType.ALL;
-    this._sortType = SortType.DEFAULT;
+    this._sortType = SortType.POPULARITY;
     makeAutoObservable(this);
   }
 

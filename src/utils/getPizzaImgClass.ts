@@ -1,4 +1,4 @@
-import { PizzaSize } from "../interfaces/IPizza";
+import { PizzaSize } from "./consts/consts";
 
 export const getPizzaImgClass = (size: PizzaSize) => {
   switch (size) {

@@ -1,37 +1,19 @@
-import pizzaImg from "../assets/images/711b5f74b1ad419f9c4e61784474fa1d_760x760.jpeg";
+import IPizzaIngredient from "./IPizzaIngredient";
+import IPizzaAddon from "./IPizzaAddon";
+import IPizzaVariant from "./IPizzaVariant";
 
-export enum PizzaType {
-  MEAT = "мясная",
-  VEGETARIAN = "вегетарианская",
-  GRILL = "гриль",
-  ACUTE = "острая",
-  CLOSED = "закрытая",
-}
-
-export enum PizzaDough {
-  THIN = "тонкое",
-  TRADITIONAL = "традиционное",
-}
-
-export enum PizzaSize {
-  SMALL = 25,
-  MEDIUM = 30,
-  BIG = 35,
-}
-
-export interface IIngredient {
-  name: string;
-  required: boolean;
-}
+export type PizzaType =
+  | "Мясная"
+  | "Вегетарианская"
+  | "Гриль"
+  | "Острая"
+  | "Закрытая";
 
 export default interface IPizza {
   id: string;
-  type: string;
-  ingredients: IIngredient[];
+  type: PizzaType;
   name: string;
-  dough: string;
-  minWeight: number;
-  size: PizzaSize;
-  price: number;
-  img: typeof pizzaImg;
+  variants: IPizzaVariant[];
+  ingredients: IPizzaIngredient[];
+  addons: IPizzaAddon[];
 }
