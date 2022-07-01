@@ -1,19 +1,18 @@
 import { ChangeEvent, FC, Fragment, memo, useState } from "react";
 import useEffectSkipMount from "../../hooks/useEffectSkipMount";
-// import { PizzaDough, PizzaSize } from "../../interfaces/IPizza";
 import "./style.scss";
 
 export interface IOption {
   name: string;
-  value: string | number;
+  value: number;
   disabled?: boolean;
 }
 
 interface OptionBarProps {
   barName: string;
   options: IOption[];
-  currentOption: string | number;
-  onChange: (current: string) => void;
+  currentOption: number;
+  onChange: (current: number) => void;
 }
 
 const OptionBar: FC<OptionBarProps> = ({
@@ -22,17 +21,19 @@ const OptionBar: FC<OptionBarProps> = ({
   barName,
   onChange,
 }) => {
-  const [checkedMarkerTranslateX, setCheckedMarkerTranslateX] = useState(0);
+  const [checkedMarkerTranslateX, setCheckedMarkerTranslateX] = useState(
+    currentOption * 100
+  );
   const checkedMarkerLength = (1 / options.length) * 99 + "%";
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
     setCheckedMarkerTranslateX(index * 100);
-    onChange(e.target.value);
+    onChange(Number(e.target.value));
   };
 
   const nullify = () => {
     setCheckedMarkerTranslateX(0);
-    onChange(options[0].value.toString());
+    onChange(options[0].value);
   };
 
   useEffectSkipMount(() => {

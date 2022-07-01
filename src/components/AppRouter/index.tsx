@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { ProductInfoModal } from "..";
+import { ProductInfoModal, ShoppingCart } from "..";
 import { authRoutes, publicRoutes } from "../../utils/consts/routes";
 
 // * temp

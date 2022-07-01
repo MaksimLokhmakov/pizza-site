@@ -1,6 +1,11 @@
 article.product {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: space-between;
   width: 18vw;
-  height: auto;
+  height: 28vw;
+  max-height: 28vw;
   margin: 0 0.75vw 2vw 0.75vw;
   cursor: pointer;
 
@@ -11,7 +16,8 @@ article.product {
   }
 
   main {
-    margin-bottom: 2vw;
+    // margin-bottom: 2vw;
+    font-size: 1vw;
 
     img {
       transition-duration: 200ms;
@@ -24,10 +30,6 @@ article.product {
       text-align: left;
       font-size: 1.5vw;
       padding: 0 0 0.5vw;
-    }
-
-    p {
-      font-size: 1vw;
     }
   }
 
