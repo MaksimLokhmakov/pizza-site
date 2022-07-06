@@ -18,7 +18,7 @@ const IngredientsList = ({
   return (
     <>
       {ingredients.map((ingredient, index) => {
-        const key = index;
+        const key = ingredient.id;
         const isFirst = index === 0;
         const isLast = index === ingredients.length - 1;
         let currentIngredient = { ...ingredient };

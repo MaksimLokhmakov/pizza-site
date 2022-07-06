@@ -1,13 +1,18 @@
 import { FC } from "react";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { ProductInfoModal, ShoppingCart } from "..";
+import {
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
+import { ProductInfoModal } from "..";
 import { authRoutes, publicRoutes } from "../../utils/consts/routes";
-
-// * temp
-import pizzaImg from "../../assets/images/711b5f74b1ad419f9c4e61784474fa1d_760x760.jpeg";
+import Popup from "../Popup";
 
 const AppRouter: FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const state = location.state as { backgroundLocation?: Location };
 
   const isAuth: boolean = true;
@@ -28,9 +33,14 @@ const AppRouter: FC = () => {
       {state?.backgroundLocation && (
         <Routes>
           <Route
-            path="/product/:id"
+            path="/product=:id"
             element={
-              <ProductInfoModal isOpened={Boolean(state?.backgroundLocation)} />
+              <Popup
+                isOpened={Boolean(state?.backgroundLocation)}
+                onClose={() => navigate(-1)}
+              >
+                <ProductInfoModal />
+              </Popup>
             }
           />
         </Routes>

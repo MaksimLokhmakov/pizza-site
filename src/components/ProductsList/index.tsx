@@ -19,7 +19,7 @@ const ProductsList = observer(() => {
         {pizzas.map((pizza: IPizza) => (
           <Link
             key={pizza.id}
-            to={`/product/${pizza.id}`}
+            to={`/product=${pizza.id}`}
             state={{ backgroundLocation: location }}
           >
             <ProductCard product={pizza} />

@@ -4,12 +4,18 @@
   height: 10vw;
   background-color: #ffffff;
   border-radius: 10px;
-  margin: 0.3vw;
+  margin: 0.3vw 0.325vw;
   padding: 0.8vw;
   box-shadow: rgba(6, 5, 50, 0.12) 0px 4px 20px;
   transition-duration: 200ms;
   border: 1px solid transparent;
   cursor: pointer;
+
+  &[data-selected="true"] {
+    box-shadow: rgb(6 5 50 / 12%) 0px 0px 0px;
+    border: 1px solid rgb(255, 105, 0);
+    transition-duration: 100ms;
+  }
 
   &:hover {
     box-shadow: rgb(6 5 50 / 12%) 0px 0px 8px;
