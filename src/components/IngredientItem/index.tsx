@@ -7,21 +7,21 @@ import { useState } from "react";
 type IngredientItemProps = {
   ingredient: IPizzaIngredient;
   isEditable?: boolean;
+  isDelisted?: boolean;
   onClick?: (ingredient: IPizzaIngredient) => void;
 };
 
 const IngredientItem = ({
   ingredient,
   isEditable,
+  isDelisted,
   onClick,
 }: IngredientItemProps) => {
   const { name, required } = ingredient;
-  const [isActive, setIsActive] = useState(true);
-  const currentIcon = isActive ? deleteIcon : returnIcon;
-  const currentStyle = isActive ? "active" : "unactive";
+  const currentIcon = isDelisted ? returnIcon : deleteIcon;
+  const currentStyle = isDelisted ? "unactive" : "active";
 
   const handleClick = () => {
-    setIsActive((prev) => !prev);
     onClick && onClick(ingredient);
   };
 

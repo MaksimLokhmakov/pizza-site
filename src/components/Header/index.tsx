@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useCallback } from "react";
 import { useNavigation } from "../../hooks";
 import ShoppingCartButton from "../Buttons/ShoppingCartButton";
 import HeaderSearchInput from "./HeaderSearchInput";
@@ -10,9 +10,9 @@ const Header: FC = () => {
   const { navigateTo, currentRoute } = useNavigation();
   const isBasketRoute = currentRoute === Routes.BASKET_ROUTE;
 
-  const navigateToShoppingCart = () => {
+  const navigateToShoppingCart = useCallback(() => {
     navigateTo(Routes.BASKET_ROUTE);
-  };
+  }, []);
 
   const navigateToShopPage = () => {
     navigateTo(Routes.SHOP_ROUTE);

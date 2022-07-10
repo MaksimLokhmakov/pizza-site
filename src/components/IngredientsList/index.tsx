@@ -6,12 +6,14 @@ import "./style.scss";
 
 type IngredientsListProps = {
   ingredients: IPizzaIngredient[];
+  formedIngredients?: IPizzaIngredient[];
   isEditable?: boolean;
   onClickIngredient?: (currentIngredient: IPizzaIngredient) => void;
 };
 
 const IngredientsList = ({
   ingredients,
+  formedIngredients = [],
   isEditable = false,
   onClickIngredient,
 }: IngredientsListProps) => {
@@ -21,6 +23,9 @@ const IngredientsList = ({
         const key = ingredient.id;
         const isFirst = index === 0;
         const isLast = index === ingredients.length - 1;
+        const isIngredientDelisted = !formedIngredients.find(
+          (current) => current.id === ingredient.id
+        );
         let currentIngredient = { ...ingredient };
 
         if (isFirst) {
@@ -33,6 +38,7 @@ const IngredientsList = ({
               key={key}
               ingredient={currentIngredient}
               isEditable={isEditable}
+              isDelisted={isIngredientDelisted}
               onClick={onClickIngredient}
             />
             {!isLast && ", "}

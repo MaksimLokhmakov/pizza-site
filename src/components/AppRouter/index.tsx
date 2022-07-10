@@ -6,9 +6,10 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import { ProductInfoModal } from "..";
+import { ProductInfo } from "..";
 import { authRoutes, publicRoutes } from "../../utils/consts/routes";
 import Popup from "../Popup";
+import classes from "../../styles/popup.module.scss";
 
 const AppRouter: FC = () => {
   const location = useLocation();
@@ -16,6 +17,17 @@ const AppRouter: FC = () => {
   const state = location.state as { backgroundLocation?: Location };
 
   const isAuth: boolean = true;
+
+  const productInfoPopup = (
+    <Popup
+      isOpened={Boolean(state?.backgroundLocation)}
+      onClose={() => navigate(-1)}
+    >
+      <div className={classes.popup}>
+        <ProductInfo />
+      </div>
+    </Popup>
+  );
 
   return (
     <>
@@ -32,17 +44,7 @@ const AppRouter: FC = () => {
 
       {state?.backgroundLocation && (
         <Routes>
-          <Route
-            path="/product=:id"
-            element={
-              <Popup
-                isOpened={Boolean(state?.backgroundLocation)}
-                onClose={() => navigate(-1)}
-              >
-                <ProductInfoModal />
-              </Popup>
-            }
-          />
+          <Route path="/product=:id" element={productInfoPopup} />
         </Routes>
       )}
     </>

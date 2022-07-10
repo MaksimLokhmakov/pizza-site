@@ -4,14 +4,14 @@ export default function useEffectSkipMount(
   callback: () => void,
   dependencies: any[]
 ) {
-  const isMounted = useRef(true);
+  const isMounted = useRef(false);
 
   useEffect(() => {
-    if (!isMounted.current) {
-      return callback();
+    if (isMounted.current) {
+      callback();
     }
 
-    isMounted.current = false;
+    isMounted.current = true;
     // eslint-disable-next-line
   }, dependencies);
 }

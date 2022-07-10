@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 export default function useAnimatedValues(
-  startPoint: object,
-  endPoint: object,
+  startPoint: any,
+  endPoint: any,
   closingFunction: () => void,
   duration: number
 ) {
