@@ -41,3 +41,5 @@ export const optionBarPizzaSizeOptions: IOption[] = [
   { name: "Средняя", value: 1 },
   { name: "Большая", value: 2 },
 ];
+
+export const animationDuration = 200;
