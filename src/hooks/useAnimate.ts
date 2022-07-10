@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function useAnimate(
+export default function useAnimatedValues(
   startPoint: object,
   endPoint: object,
   closingFunction: () => void,
