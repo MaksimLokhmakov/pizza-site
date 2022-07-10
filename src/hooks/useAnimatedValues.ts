@@ -20,5 +20,5 @@ export default function useAnimatedValues(
     }, duration);
   };
 
-  return { animated, handleCloseAfterAnimation, duration };
+  return { animated, handleCloseAfterAnimation };
 }
