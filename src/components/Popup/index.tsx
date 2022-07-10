@@ -44,11 +44,9 @@ const Popup: FC<PopupProps> = ({ children, onClose, isOpened }) => {
     <Portal>
       <div className="popup df" role="dialog" style={wrapperAnimationStyle}>
         <Overlay onClick={handleCloseAfterAnimation}>
-          {
-            <div className="df pa bcfff" style={contentAnimationStyle}>
-              {children}
-            </div>
-          }
+          <div className="df pa bcfff" style={contentAnimationStyle}>
+            {children}
+          </div>
         </Overlay>
       </div>
     </Portal>
