@@ -5,9 +5,11 @@ import HeaderSearchInput from "./HeaderSearchInput";
 import { Routes } from "../../interfaces/IRoute";
 import logo from "../../assets/images/logo.svg";
 import "./style.scss";
+import { Link, useLocation } from "react-router-dom";
 
 const Header: FC = () => {
   const { navigateTo, currentRoute } = useNavigation();
+  const location = useLocation();
   const isBasketRoute = currentRoute === Routes.BASKET_ROUTE;
 
   const navigateToShoppingCart = useCallback(() => {
@@ -31,9 +33,9 @@ const Header: FC = () => {
       <HeaderSearchInput />
 
       {!isBasketRoute && (
-        <div>
-          <ShoppingCartButton onClick={navigateToShoppingCart} />
-        </div>
+        <Link to={`/shoppingcart`} state={{ backgroundLocation: location }}>
+          <ShoppingCartButton onClick={() => {}} />
+        </Link>
       )}
       <div className="header__ceparator" />
     </header>
