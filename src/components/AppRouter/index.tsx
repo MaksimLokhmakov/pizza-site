@@ -6,7 +6,7 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import { ProductInfo } from "..";
+import { ProductInfo, ShoppingCart } from "..";
 import { authRoutes, publicRoutes } from "../../utils/consts/routes";
 import Popup from "../Popup";
 import classes from "../../styles/popup.module.scss";
@@ -29,6 +29,17 @@ const AppRouter: FC = () => {
     </Popup>
   );
 
+  const shoppingCartSideBar = (
+    <Popup
+      isOpened={Boolean(state?.backgroundLocation)}
+      onClose={() => navigate(-1)}
+    >
+      <div className={classes.sidebar}>
+        <ShoppingCart />
+      </div>
+    </Popup>
+  );
+
   return (
     <>
       <Routes location={state?.backgroundLocation || location}>
@@ -45,6 +56,7 @@ const AppRouter: FC = () => {
       {state?.backgroundLocation && (
         <Routes>
           <Route path="/product=:id" element={productInfoPopup} />
+          <Route path="/shoppingcart" element={shoppingCartSideBar} />
         </Routes>
       )}
     </>
