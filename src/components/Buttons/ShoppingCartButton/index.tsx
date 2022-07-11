@@ -6,11 +6,11 @@ import ShoppingCartIcon from "../../../assets/icons/iconfinder_shopping-cart_256
 import "./style.scss";
 
 interface ShoppingCartButtonProps {
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const ShoppingCartButton: FC<ShoppingCartButtonProps> = ({ onClick }) => {
-  const handleClick = () => onClick();
+  const handleClick = () => onClick && onClick();
 
   console.log("ShoppingCartButtonProps render");
 

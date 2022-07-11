@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import useEffectSkipMount from "./useEffectSkipMount";
 
 export default function useAnimatedValues(
   startPoint: any,
   endPoint: any,
-  closingFunction: () => void,
-  duration: number
+  duration: number,
+  closingFunction?: () => void
 ) {
   const [animated, setAnimated] = useState(startPoint);
 
@@ -12,11 +13,15 @@ export default function useAnimatedValues(
     setAnimated(endPoint);
   }, []);
 
+  useEffectSkipMount(() => {
+    setAnimated(startPoint);
+  }, [animated]);
+
   const handleCloseAfterAnimation = () => {
     setAnimated(startPoint);
 
     setTimeout(() => {
-      closingFunction();
+      closingFunction && closingFunction();
     }, duration);
   };
 
