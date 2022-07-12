@@ -1,7 +1,21 @@
-.sidebar-wrapper {
-  width: 100vw;
+.shopping-cart {
+  position: relative;
+  background-color: rgb(245, 245, 245);
+}
+
+.content {
   height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0;
+  min-width: 300px;
+}
+
+section.cart {
+  padding: 0 0.8vw;
+
+  .cart-title {
+    width: 100%;
+    font-family: Proxima Nova Light;
+    font-weight: 600;
+    font-size: 1.4vw;
+    margin: 1.2vw 0 0.4vw;
+  }
 }
