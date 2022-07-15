@@ -5,8 +5,9 @@ import { Context } from "../../..";
 import { SortType } from "../../../utils/consts/consts";
 import arrowDownIcon from "../../../assets/icons/Vector.svg";
 import "./style.scss";
+import { Button, Group, Image } from "../../common";
 
-const SelectSort = observer(() => {
+const SortMenu = observer(() => {
   const { selectionStore } = useContext(Context);
   const { sortType } = selectionStore;
   const sortMenuRef = useRef(null);
@@ -18,24 +19,28 @@ const SelectSort = observer(() => {
 
   return (
     <div ref={sortMenuRef} className="menu__sort">
-      <img src={arrowDownIcon} alt="arrowDownIcon" />
+      <Image src={arrowDownIcon} alt="arrowDownIcon" />
       <span>
         Сортировка: <p>{sortType}</p>
       </span>
 
       {isHover && (
         <div className="menu__sort-select">
-          <ul>
+          <Group vertical>
             {Object.values(SortType).map((type) => (
-              <li key={type} onClick={() => handleChangeSortType(type)}>
+              <Button
+                key={type}
+                className="sort-menu-button"
+                onClick={() => handleChangeSortType(type)}
+              >
                 {type}
-              </li>
+              </Button>
             ))}
-          </ul>
+          </Group>
         </div>
       )}
     </div>
   );
 });
 
-export default SelectSort;
+export default SortMenu;

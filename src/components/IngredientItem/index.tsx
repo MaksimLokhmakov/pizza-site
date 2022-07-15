@@ -1,8 +1,9 @@
 import IPizzaIngredient from "../../interfaces/IPizzaIngredient";
 import deleteIcon from "../../assets/icons/delete.svg";
 import returnIcon from "../../assets/icons/return.svg";
+import Button from "../common/Button";
+import Image from "../common/Image";
 import "./style.scss";
-import { useState } from "react";
 
 type IngredientItemProps = {
   ingredient: IPizzaIngredient;
@@ -30,13 +31,13 @@ const IngredientItem = ({
   }
 
   return (
-    <button
+    <Button
       className={["ingredient-button", currentStyle].join(" ")}
       onClick={handleClick}
     >
       {name}
-      <img src={currentIcon} alt="delete" className="ingredient-icon" />
-    </button>
+      <Image src={currentIcon} alt="delete" className="ingredient-icon" />
+    </Button>
   );
 };
 

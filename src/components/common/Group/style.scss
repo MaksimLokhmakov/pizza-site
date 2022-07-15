@@ -1,0 +1,13 @@
+.group-default {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.group-vertical {
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-between;
+}

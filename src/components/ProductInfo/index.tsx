@@ -8,10 +8,11 @@ import {
 } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../..";
-import Button, { ButtonTheme } from "../Buttons/Button";
+import Button, { ButtonTheme } from "../Buttons/ButtonPrev";
 import IngredientsList from "../IngredientsList";
 import OptionBar from "../OptionBar";
 import AddonsList from "../AddonsList";
+import Image from "../common/Image";
 import IPizza from "../../interfaces/IPizza";
 import { getPizzaImgClass } from "../../utils/getPizzaImgClass";
 import {
@@ -50,6 +51,7 @@ const ProductInfo: FC = () => {
 
   useLayoutEffect(() => {
     handleChangeVariant();
+    // eslint-disable-next-line
   }, [options]);
 
   const handleChangeVariant = () => {
@@ -138,6 +140,7 @@ const ProductInfo: FC = () => {
 
       return addon;
     });
+    // eslint-disable-next-line
   }, [options.size]);
 
   const handleChangeFormedAddonsPrice = useCallback(() => {
@@ -149,6 +152,7 @@ const ProductInfo: FC = () => {
 
       return { ...prev, addons: formedAddonsWithCurrentPrice };
     });
+    // eslint-disable-next-line
   }, [options.size]);
 
   const buttonChild = useMemo(() => {
@@ -158,6 +162,7 @@ const ProductInfo: FC = () => {
     );
 
     return `Добавить в корзину за ${(price + addonsPrice).toFixed(2)} руб.`;
+    // eslint-disable-next-line
   }, [price, formedPizza.addons]);
 
   const optionBarPizzaDoughCurrentOptions = useMemo(() => {
@@ -174,13 +179,18 @@ const ProductInfo: FC = () => {
 
       return option;
     });
+    // eslint-disable-next-line
   }, [options]);
 
   return (
     <div className="form df">
       <div className="form__left  df">
         <div className="form__left-img">
-          <img src={image} alt="pizzaimg" className={getPizzaImgClass(size)} />
+          <Image
+            src={image}
+            alt="pizzaimg"
+            className={getPizzaImgClass(size)}
+          />
         </div>
       </div>
 

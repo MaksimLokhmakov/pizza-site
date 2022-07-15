@@ -1,0 +1,16 @@
+.button-default {
+  width: auto;
+  height: auto;
+  border: 0;
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.6;
+  }
+}

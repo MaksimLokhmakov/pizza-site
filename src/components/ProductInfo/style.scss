@@ -38,14 +38,6 @@
         left: 4.3vw;
         opacity: 0.3;
       }
-
-      img {
-        position: relative;
-        top: 0.2vw;
-        width: 100%;
-        height: 100%;
-        transition-duration: 200ms;
-      }
     }
   }
 
@@ -88,11 +80,21 @@
 }
 
 .pizza-size-medium {
+  top: 0.2vw;
   transform: scale(1.2);
   z-index: 6;
 }
 
 .pizza-size-greate {
+  top: 0.2vw;
   transform: scale(1.35);
   z-index: 10;
+}
+
+.product-info-img {
+  position: relative;
+  top: 0.2vw;
+  width: 100%;
+  height: 100%;
+  transition-duration: 200ms;
 }

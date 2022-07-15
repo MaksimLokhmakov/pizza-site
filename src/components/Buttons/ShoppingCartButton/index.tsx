@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
-import { ButtonTheme } from "../Button";
-import Button from "../Button";
+import { ButtonTheme } from "../ButtonPrev";
+import Button from "../ButtonPrev";
 import arrowAlt from "../../../assets/icons/arrow_right_alt_FILL0_wght400_GRAD0_opsz48.svg";
 import ShoppingCartIcon from "../../../assets/icons/iconfinder_shopping-cart_2561279 1.svg";
 import "./style.scss";

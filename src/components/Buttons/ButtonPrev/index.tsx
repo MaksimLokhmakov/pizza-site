@@ -16,7 +16,8 @@ export enum ButtonShape {
 
 interface ButtonProps {
   children: ReactNode;
-  theme: ButtonTheme;
+  className?: string;
+  theme?: ButtonTheme;
   shape?: ButtonShape;
   active?: boolean;
   onClick?: () => void;
@@ -27,15 +28,21 @@ const Button: FC<ButtonProps> = ({
   theme,
   shape,
   active,
+  className,
   onClick,
 }) => {
   const handleClick = () => onClick && onClick();
 
+  const classes = [
+    "button",
+    className,
+    theme,
+    shape,
+    active ? "active" : "",
+  ].join(" ");
+
   return (
-    <button
-      onClick={handleClick}
-      className={["button", theme, shape, active ? "active" : ""].join(" ")}
-    >
+    <button onClick={handleClick} className={classes}>
       {children}
     </button>
   );

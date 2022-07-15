@@ -5,7 +5,15 @@
 
   &__filtretion {
     width: 70%;
-    display: flex;
+    display: inline-flex;
     justify-content: space-between;
   }
+}
+
+.button-filtration-group {
+  width: 60%;
+}
+
+.sort-chip {
+  padding: 0.6vw 1.4vw;
 }

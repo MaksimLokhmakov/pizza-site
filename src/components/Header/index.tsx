@@ -37,7 +37,7 @@ const Header: FC = () => {
           <ShoppingCartButton onClick={() => {}} />
         </Link>
       )}
-      <div className="header__ceparator" />
+      <div className="header__separator" />
     </header>
   );
 };

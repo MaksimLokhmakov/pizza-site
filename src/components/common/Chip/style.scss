@@ -1,33 +1,13 @@
-.button {
+.chip-default {
   width: 100%;
   height: auto;
-  border: 0;
   background: transparent;
 
-  padding: 0.6vw 1.5vw;
-  border-radius: 30px;
   display: flex;
-  align-items: center;
   justify-content: space-around;
-  font-family: Proxima Nova Light;
-  font-weight: 700;
-  font-size: 1.1vw;
-  transition-duration: 200ms;
-  cursor: pointer;
+  align-content: center;
 
-  span {
-    margin: 0 0.5vw;
-  }
-
-  img {
-    width: 1vw;
-    height: 1vw;
-  }
-
-  svg {
-    width: 1vw;
-    height: 1vw;
-  }
+  border-radius: 30px;
 }
 
 // ? themes

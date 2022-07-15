@@ -1,10 +1,10 @@
-import { SortMenu, ProductsList } from "../../components";
+import { SelectionMenu, ProductsList } from "../../components";
 import "./style.scss";
 
 const Shop = () => {
   return (
     <>
-      <SortMenu />
+      <SelectionMenu />
       <main className="shop">
         <ProductsList />
       </main>

@@ -1,5 +1,6 @@
 import { FC, memo } from "react";
-import Button, { ButtonTheme } from "../Buttons/Button";
+import Button, { ButtonTheme } from "../Buttons/ButtonPrev";
+import Image from "../common/Image";
 import IngredientsList from "../IngredientsList";
 import IPizza from "../../interfaces/IPizza";
 import "./style.scss";
@@ -18,7 +19,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
     <>
       <article className="product">
         <main>
-          <img src={image} alt="pizza" className="img-m" />
+          <Image src={image} alt="pizza" className="img-m" />
 
           <div className="product-name">{name}</div>
 

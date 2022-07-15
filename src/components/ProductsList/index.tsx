@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import ProductCard from "../ProductCard";
+import Title from "../common/Titile";
 import { Context } from "../..";
 import { observer } from "mobx-react-lite";
 import IPizza from "../../interfaces/IPizza";
@@ -13,7 +14,7 @@ const ProductsList = observer(() => {
 
   return (
     <>
-      <h1 className="section-name">Пицца</h1>
+      <Title>Пицца</Title>
 
       <section className="df">
         {pizzas.map((pizza: IPizza) => (

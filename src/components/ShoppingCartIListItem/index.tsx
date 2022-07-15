@@ -1,7 +1,7 @@
 import img from "../../assets/images/711b5f74b1ad419f9c4e61784474fa1d_760x760.jpeg";
 import minusIcon from "../../assets/icons/remove_FILL0_wght400_GRAD0_opsz48.svg";
 import plusIcon from "../../assets/icons/add_FILL0_wght400_GRAD0_opsz48.svg";
-import Button, { ButtonTheme, ButtonShape } from "../Buttons/Button";
+import Button, { ButtonTheme } from "../Buttons/ButtonPrev";
 import "./style.scss";
 
 const ShippingCartListItem = () => {
