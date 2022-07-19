@@ -1,44 +1,53 @@
-import { FC, useCallback } from "react";
-import { useNavigation } from "../../hooks";
-import ShoppingCartButton from "../Buttons/ShoppingCartButton";
-import HeaderSearchInput from "./HeaderSearchInput";
+import { FC } from "react";
+import HeaderSearch from "./HeaderSearch";
 import { Routes } from "../../interfaces/IRoute";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Title, Image, Separator, Chip } from "../common";
+import arrow from "../../assets/icons/arrow_right_alt_FILL0_wght400_GRAD0_opsz48.svg";
 import logo from "../../assets/images/logo.svg";
 import "./style.scss";
-import { Link, useLocation } from "react-router-dom";
 
 const Header: FC = () => {
-  const { navigateTo, currentRoute } = useNavigation();
+  const navigate = useNavigate();
   const location = useLocation();
-  const isBasketRoute = currentRoute === Routes.BASKET_ROUTE;
-
-  const navigateToShoppingCart = useCallback(() => {
-    navigateTo(Routes.BASKET_ROUTE);
-  }, []);
 
   const navigateToShopPage = () => {
-    navigateTo(Routes.SHOP_ROUTE);
+    navigate(Routes.SHOP_ROUTE);
   };
 
   return (
-    <header className="header">
-      <div className="header__left">
-        <img src={logo} alt="logo" onClick={navigateToShopPage} />
-        <div>
-          <h1>REACT PIZZA</h1>
-          <p>самая вкусная пицца во вселенной</p>
+    <>
+      <header className="header">
+        <div className="df">
+          <Image
+            src={logo}
+            alt="logo"
+            className="header-logo-img"
+            onClick={navigateToShopPage}
+          />
+          <div>
+            <Title className="header-title">REACT PIZZA</Title>
+            <p>самая вкусная пицца во вселенной</p>
+          </div>
         </div>
-      </div>
 
-      <HeaderSearchInput />
+        <HeaderSearch />
 
-      {!isBasketRoute && (
-        <Link to={`/shoppingcart`} state={{ backgroundLocation: location }}>
-          <ShoppingCartButton onClick={() => {}} />
+        <Link
+          to={Routes.SHOPPINGCART_ROUTE}
+          state={{ backgroundLocation: location }}
+        >
+          <Chip className="header-button" theme="colloring-light-deep">
+            Корзина
+            <Separator vertical className="header-button-separator" />
+            <span className="header-button-counter">{5}</span>
+            <Image src={arrow} alt={arrow} className="header-button-img" />
+          </Chip>
         </Link>
-      )}
-      <div className="header__separator" />
-    </header>
+      </header>
+
+      <Separator className="header-separator" />
+    </>
   );
 };
 

@@ -1,11 +1,11 @@
 import { useContext, useRef } from "react";
+import { Button, Group, Image, Dropdown } from "../../common";
 import { observer } from "mobx-react-lite";
 import { useHover } from "../../../hooks";
 import { Context } from "../../..";
 import { SortType } from "../../../utils/consts/consts";
 import arrowDownIcon from "../../../assets/icons/Vector.svg";
 import "./style.scss";
-import { Button, Group, Image } from "../../common";
 
 const SortMenu = observer(() => {
   const { selectionStore } = useContext(Context);
@@ -18,27 +18,29 @@ const SortMenu = observer(() => {
   };
 
   return (
-    <div ref={sortMenuRef} className="menu__sort">
-      <Image src={arrowDownIcon} alt="arrowDownIcon" />
+    <div ref={sortMenuRef} className="sort-menu">
+      <Image
+        src={arrowDownIcon}
+        alt="arrowDownIcon"
+        className="sort-menu-img"
+      />
       <span>
         Сортировка: <p>{sortType}</p>
       </span>
 
-      {isHover && (
-        <div className="menu__sort-select">
-          <Group vertical>
-            {Object.values(SortType).map((type) => (
-              <Button
-                key={type}
-                className="sort-menu-button"
-                onClick={() => handleChangeSortType(type)}
-              >
-                {type}
-              </Button>
-            ))}
-          </Group>
-        </div>
-      )}
+      <Dropdown visible={isHover} className="sort-menu-select">
+        <Group vertical>
+          {Object.values(SortType).map((type) => (
+            <Button
+              key={type}
+              className="sort-menu-select-button"
+              onClick={() => handleChangeSortType(type)}
+            >
+              {type}
+            </Button>
+          ))}
+        </Group>
+      </Dropdown>
     </div>
   );
 });

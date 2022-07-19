@@ -1,6 +1,6 @@
 import { memo } from "react";
-import IPizzaIngredient from "../../interfaces/IPizzaIngredient";
-import ucFirst from "../../utils/ucFirst";
+import IPizzaIngredient from "../../../../interfaces/IPizzaIngredient";
+import ucFirst from "../../../../utils/ucFirst";
 import IngredientItem from "../IngredientItem";
 import "./style.scss";
 

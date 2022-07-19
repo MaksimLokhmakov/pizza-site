@@ -1,6 +1,6 @@
 import { FC } from "react";
-import IPizzaAddon from "../../interfaces/IPizzaAddon";
-import selectedIcon from "../../assets/icons/selected-icon.svg";
+import IPizzaAddon from "../../../../interfaces/IPizzaAddon";
+import selectedIcon from "../../../../assets/icons/selected-icon.svg";
 import "./style.scss";
 
 interface AddonItemProps {

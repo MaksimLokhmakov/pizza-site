@@ -7,8 +7,12 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { ProductInfo, ShoppingCart } from "..";
-import { authRoutes, publicRoutes } from "../../utils/consts/routes";
-import Popup from "../Popup";
+import {
+  authRoutes,
+  modalRoutes,
+  publicRoutes,
+} from "../../utils/consts/routes";
+import Popup from "../modals/Popup";
 import classes from "../../styles/popup.module.scss";
 
 const AppRouter: FC = () => {
@@ -55,8 +59,9 @@ const AppRouter: FC = () => {
 
       {state?.backgroundLocation && (
         <Routes>
-          <Route path="/product=:id" element={productInfoPopup} />
-          <Route path="/shoppingcart" element={shoppingCartSideBar} />
+          {modalRoutes.map((route) => {
+            return <Route key={route.path} {...route} />;
+          })}
         </Routes>
       )}
     </>

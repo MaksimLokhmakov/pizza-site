@@ -7,6 +7,8 @@ export enum Routes {
   LOGIN_ROUTE = "/login",
   REGISTRATION_ROUTE = "/registration",
   FAVORITES_ROUTE = "/favorites",
+  PRODUCT_ROUTE = "/product=:id",
+  SHOPPINGCART_ROUTE = "/shoppingcart",
 }
 
 export default interface IRoute {

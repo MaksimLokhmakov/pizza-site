@@ -1,8 +1,8 @@
-import IPizzaIngredient from "../../interfaces/IPizzaIngredient";
-import deleteIcon from "../../assets/icons/delete.svg";
-import returnIcon from "../../assets/icons/return.svg";
-import Button from "../common/Button";
-import Image from "../common/Image";
+import IPizzaIngredient from "../../../../interfaces/IPizzaIngredient";
+import deleteIcon from "../../../../assets/icons/delete.svg";
+import returnIcon from "../../../../assets/icons/return.svg";
+import Button from "../../../common/Button";
+import Image from "../../../common/Image";
 import "./style.scss";
 
 type IngredientItemProps = {
@@ -20,7 +20,7 @@ const IngredientItem = ({
 }: IngredientItemProps) => {
   const { name, required } = ingredient;
   const currentIcon = isDelisted ? returnIcon : deleteIcon;
-  const currentStyle = isDelisted ? "unactive" : "active";
+  const currentStyle = isDelisted ? "ingredient-unactive" : "ingredient-active";
 
   const handleClick = () => {
     onClick && onClick(ingredient);

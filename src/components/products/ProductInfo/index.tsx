@@ -7,21 +7,21 @@ import {
   useState,
 } from "react";
 import { useParams } from "react-router-dom";
-import { Context } from "../..";
-import Button, { ButtonTheme } from "../Buttons/ButtonPrev";
-import IngredientsList from "../IngredientsList";
-import OptionBar from "../OptionBar";
-import AddonsList from "../AddonsList";
-import Image from "../common/Image";
-import IPizza from "../../interfaces/IPizza";
-import { getPizzaImgClass } from "../../utils/getPizzaImgClass";
+import { Context } from "../../..";
+import Button, { ButtonTheme } from "../../Buttons/ButtonPrev";
+import IngredientsList from "../ingredients/IngredientsList";
+import OptionBar from "../../OptionBar";
+import AddonsList from "../addons/AddonsList";
+import Image from "../../common/Image";
+import IPizza from "../../../interfaces/IPizza";
+import { getPizzaImgClass } from "../../../utils/getPizzaImgClass";
 import {
   optionBarPizzaDoughOptions,
   optionBarPizzaSizeOptions,
-} from "../../utils/consts/consts";
+} from "../../../utils/consts/consts";
 import "./style.scss";
-import IPizzaAddon from "../../interfaces/IPizzaAddon";
-import IPizzaIngredient from "../../interfaces/IPizzaIngredient";
+import IPizzaAddon from "../../../interfaces/IPizzaAddon";
+import IPizzaIngredient from "../../../interfaces/IPizzaIngredient";
 
 const ProductInfo: FC = () => {
   const { pizzaStore } = useContext(Context);
@@ -182,15 +182,13 @@ const ProductInfo: FC = () => {
     // eslint-disable-next-line
   }, [options]);
 
+  const imgClasses = [getPizzaImgClass(size), "form-img"].join(" ");
+
   return (
     <div className="form df">
       <div className="form__left  df">
         <div className="form__left-img">
-          <Image
-            src={image}
-            alt="pizzaimg"
-            className={getPizzaImgClass(size)}
-          />
+          <Image src={image} alt="pizzaimg" className={imgClasses} />
         </div>
       </div>
 

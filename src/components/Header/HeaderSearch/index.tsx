@@ -1,11 +1,13 @@
-import { ChangeEvent, FC, useContext } from "react";
+import { ChangeEvent, FC, useContext, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../..";
 import { useDebounce } from "../../../hooks";
+import { Chip, Image } from "../../common";
 import searchIcon from "../../../assets/icons/search_FILL0_wght400_GRAD0_opsz48.svg";
 import "./style.scss";
 
-const HeaderSearchInput: FC = observer(() => {
+const HeaderSearch: FC = observer(() => {
+  const [isOnFocus, setIsOnFocus] = useState(false);
   const { selectionStore } = useContext(Context);
   const { searchValue } = selectionStore;
 
@@ -16,17 +18,27 @@ const HeaderSearchInput: FC = observer(() => {
     someFunc(e.target.value);
   };
 
+  const handleFocus = () => {
+    setIsOnFocus((prev) => !prev);
+  };
+
   return (
-    <div className="header__search">
-      <img src={searchIcon} alt="searchIcon" />
+    <Chip className="search-wrapper" theme="outline-gray">
+      <Image
+        src={searchIcon}
+        alt="searchIcon"
+        className="search-wrapper-icon"
+      />
       <input
         type="text"
         placeholder="Поиск..."
+        className="search-wrapper-input"
         value={searchValue}
         onChange={handleChange}
+        onFocus={handleFocus}
       />
-    </div>
+    </Chip>
   );
 });
 
-export default HeaderSearchInput;
+export default HeaderSearch;

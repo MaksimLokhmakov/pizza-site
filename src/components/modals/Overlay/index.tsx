@@ -3,12 +3,13 @@ import "./style.scss";
 interface OverlayProps {
   children: ReactNode;
   onClick: () => void;
+  visible?: boolean;
 }
 
-const Overlay: FC<OverlayProps> = ({ children, onClick }) => {
+const Overlay: FC<OverlayProps> = ({ children, onClick, visible = true }) => {
   return (
     <>
-      <div className="overlay" onClick={onClick} />
+      {visible && <div className="overlay" onClick={onClick} />}
       {children}
     </>
   );

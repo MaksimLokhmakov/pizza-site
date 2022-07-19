@@ -1,8 +1,8 @@
 import { FC, memo } from "react";
-import Button, { ButtonTheme } from "../Buttons/ButtonPrev";
-import Image from "../common/Image";
-import IngredientsList from "../IngredientsList";
-import IPizza from "../../interfaces/IPizza";
+import Button, { ButtonTheme } from "../../Buttons/ButtonPrev";
+import Image from "../../common/Image";
+import IngredientsList from "../ingredients/IngredientsList";
+import IPizza from "../../../interfaces/IPizza";
 import "./style.scss";
 
 interface ProductCardProps {

@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import IPizzaAddon from "../../interfaces/IPizzaAddon";
+import IPizzaAddon from "../../../../interfaces/IPizzaAddon";
 import AddonItem from "../AddonItem";
 import "./style.scss";
 
@@ -12,7 +12,7 @@ interface AddonsListProps {
 const AddonsList: FC<AddonsListProps> = ({
   addons,
   formedAddons,
-  onClickAddon = () => {},
+  onClickAddon,
 }) => {
   return (
     <>

@@ -1,5 +1,10 @@
-.separator {
+.separator-default {
   height: 1px;
   width: 100%;
   background: #f7f7f7;
+}
+
+.separator-vertical {
+  width: 1px;
+  height: 100%;
 }

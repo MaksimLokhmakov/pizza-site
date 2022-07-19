@@ -2,11 +2,16 @@ import { FC } from "react";
 import "./style.scss";
 
 interface SeparatorProps {
-  className: string;
+  vertical?: boolean;
+  className?: string;
 }
 
-const Separator: FC<SeparatorProps> = ({ className }) => {
-  const classes = ["separator", className].join(" ");
+const Separator: FC<SeparatorProps> = ({ className, vertical }) => {
+  const classes = [
+    "separator-default",
+    className,
+    vertical && "separator-vertical",
+  ].join(" ");
 
   return <div className={classes} />;
 };

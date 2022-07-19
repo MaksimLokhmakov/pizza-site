@@ -1,14 +1,14 @@
+import ProductInfo from "../../components/products/ProductInfo";
+import ShoppingCart from "../../components/ShoppingCart";
+import PopupDepsRoute from "../../components/modals/PopupDepsRoute";
 import IRoute, { Routes } from "../../interfaces/IRoute";
-import { Admin, Busket, Favorites, Auth, Product, Shop } from "../../pages";
+import { Admin, Favorites, Auth, Shop } from "../../pages";
+import classes from "../../styles/popup.module.scss";
 
 export const authRoutes: IRoute[] = [
   {
     path: Routes.ADMIN_ROUTE,
     element: <Admin />,
-  },
-  {
-    path: Routes.BASKET_ROUTE,
-    element: <Busket />,
   },
   {
     path: Routes.FAVORITES_ROUTE,
@@ -29,8 +29,23 @@ export const publicRoutes: IRoute[] = [
     path: Routes.SHOP_ROUTE,
     element: <Shop />,
   },
-  // {
-  //   path: Routes.PRODUCT_ROUTE,
-  //   element: <Product />,
-  // },
+];
+
+export const modalRoutes: IRoute[] = [
+  {
+    path: Routes.PRODUCT_ROUTE,
+    element: (
+      <PopupDepsRoute className={classes.popup}>
+        <ProductInfo />
+      </PopupDepsRoute>
+    ),
+  },
+  {
+    path: Routes.SHOPPINGCART_ROUTE,
+    element: (
+      <PopupDepsRoute className={classes.sidebar}>
+        <ShoppingCart />
+      </PopupDepsRoute>
+    ),
+  },
 ];

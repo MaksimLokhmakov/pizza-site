@@ -5,30 +5,67 @@
   align-items: center;
   width: 100%;
   height: auto;
-  padding: 0 0 2vw 0;
-  margin: 0 0 2vw 0;
   background-color: #fff;
+  transition: ease-in-out;
   transition-duration: 200ms;
 
-  &__left {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    img {
-      width: 3vw;
-      height: 3vw;
-      margin-right: 1vw;
-      cursor: pointer;
-    }
+  &-title {
+    font-size: 1.8vw;
   }
 
-  &__separator {
-    position: absolute;
-    bottom: 0;
-    height: 1px;
-    left: -5%;
+  &-logo-img {
+    width: 2.7vw;
+    height: 2.7vw;
+    margin-right: 1vw;
+    cursor: pointer;
+  }
+
+  p {
+    font-size: 1.15vw;
+  }
+
+  &-separator {
+    position: relative;
     width: 110%;
-    background: #f7f7f7;
+    right: 5%;
+    margin: 2vw 0;
+  }
+
+  &-button {
+    height: 2.219vw;
+    padding: 0.4vw 1.2vw;
+    justify-content: center;
+    align-items: center;
+
+    & span {
+      font-size: 1vw;
+    }
+
+    &-separator {
+      margin: 0 0.5vw;
+    }
+
+    &-img {
+      position: absolute;
+      right: 0.6vw;
+      transform: translate(-0.3vw);
+      opacity: 0;
+      width: 1.3vw;
+      height: 1.3vw;
+    }
+
+    &-counter {
+      transition: 200ms ease-in-out;
+      opacity: 1;
+    }
+
+    &:hover &-img {
+      transform: translate(0);
+      opacity: 1;
+    }
+
+    &:hover &-counter {
+      opacity: 0;
+    }
   }
 }
