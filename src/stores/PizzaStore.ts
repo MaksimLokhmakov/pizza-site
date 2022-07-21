@@ -3,14 +3,13 @@ import IPizza from "../interfaces/IPizza";
 
 // * temp
 export interface IPizzaStore {
-  _pizzas: IPizza[] | null;
+  pizzas: IPizza[];
 
-  setPizzas: (currentValue: IPizza[]) => void;
   getPizzaByID: (currentId: string) => IPizza | undefined;
 }
 
 export default class PizzaStore implements IPizzaStore {
-  _pizzas: IPizza[] | null;
+  _pizzas: IPizza[];
 
   constructor() {
     this._pizzas = [
@@ -531,15 +530,15 @@ export default class PizzaStore implements IPizzaStore {
     makeAutoObservable(this);
   }
 
-  setPizzas(currentValue: IPizza[]) {
+  get pizzas() {
+    return this._pizzas;
+  }
+
+  set pizzas(currentValue: IPizza[]) {
     this._pizzas = currentValue;
   }
 
   getPizzaByID(currentId: string) {
     return this._pizzas?.find((pizza) => pizza.id === currentId);
-  }
-
-  get pizzas() {
-    return this._pizzas;
   }
 }
