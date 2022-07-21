@@ -1,9 +1,18 @@
-import { useCallback, useState, useEffect } from "react";
+import { observer } from "mobx-react-lite";
+import { useState, useEffect, useContext } from "react";
+import { Context } from "../../..";
+import { ISelectionStore } from "../../../stores/SelectionStore";
 import AutoComplite from "../AutoComplite";
 import Search from "../Search";
 import "./style.scss";
 
-const SearchWithAutoComplite = () => {
+const SearchWithAutoComplite = observer(() => {
+  const { selectionStore }: { selectionStore: ISelectionStore } =
+    useContext(Context);
+  const { searchValue } = selectionStore;
+
+  const isSearchNotEmpty = searchValue.length > 0;
+
   const [isOnFocus, setIsOnFocus] = useState(false);
   const [isAutoVisible, setIsAutoVisible] = useState(false);
   const [autocompliteStyles, setAutocompliteStyles] = useState({
@@ -28,14 +37,24 @@ const SearchWithAutoComplite = () => {
     setTimeout(() => setIsAutoVisible(false), 300);
   };
 
-  const classes = ["search-default", isOnFocus ? "search-focus" : ""].join(" ");
+  const classes = [
+    "search-default",
+    isOnFocus && isSearchNotEmpty ? "search-focus" : "",
+  ].join(" ");
 
   return (
     <div className={classes}>
-      <Search isOnFocus={isOnFocus} onFocus={handleFocus} onBlur={handleBlur} />
-      <AutoComplite visible={isAutoVisible} style={autocompliteStyles} />
+      <Search
+        isOnFocus={isOnFocus && isSearchNotEmpty}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+      />
+      <AutoComplite
+        visible={isAutoVisible && isSearchNotEmpty}
+        style={autocompliteStyles}
+      />
     </div>
   );
-};
+});
 
 export default SearchWithAutoComplite;

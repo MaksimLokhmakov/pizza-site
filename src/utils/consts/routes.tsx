@@ -1,5 +1,5 @@
 import ProductInfo from "../../components/products/ProductInfo";
-import ShoppingCart from "../../components/ShoppingCart";
+import ShoppingCart from "../../components/shopingcart/ShoppingCart";
 import PopupDepsRoute from "../../components/modals/PopupDepsRoute";
 import IRoute, { Routes } from "../../interfaces/IRoute";
 import { Admin, Favorites, Auth, Shop } from "../../pages";

@@ -14,7 +14,7 @@ const SortMenu = observer(() => {
   const isHover = useHover(sortMenuRef);
 
   const handleChangeSortType = (currentType: SortType) => {
-    selectionStore.setSortType(currentType);
+    selectionStore.sortType = currentType;
   };
 
   return (
@@ -30,15 +30,19 @@ const SortMenu = observer(() => {
 
       <Dropdown visible={isHover} className="sort-menu-select">
         <Group vertical>
-          {Object.values(SortType).map((type) => (
-            <Button
-              key={type}
-              className="sort-menu-select-button"
-              onClick={() => handleChangeSortType(type)}
-            >
-              {type}
-            </Button>
-          ))}
+          {Object.values(SortType).map((type) => {
+            const handleClick = () => handleChangeSortType(type);
+
+            return (
+              <Button
+                key={type}
+                className="sort-menu-select-button"
+                onClick={handleClick}
+              >
+                {type}
+              </Button>
+            );
+          })}
         </Group>
       </Dropdown>
     </div>

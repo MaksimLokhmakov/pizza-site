@@ -1,5 +1,6 @@
 import { FC, memo } from "react";
 import IPizzaAddon from "../../../../interfaces/IPizzaAddon";
+import { Title } from "../../../common";
 import AddonItem from "../AddonItem";
 import "./style.scss";
 
@@ -16,7 +17,7 @@ const AddonsList: FC<AddonsListProps> = ({
 }) => {
   return (
     <>
-      <h2 className="title">Добавить в пиццу</h2>
+      <Title className="title">Добавить в пиццу</Title>
       <section className="addons-list">
         {addons.map((addon) => {
           const dataSelected = formedAddons.includes(addon);

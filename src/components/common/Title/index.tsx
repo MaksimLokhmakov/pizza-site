@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, memo } from "react";
 import "./style.scss";
 
 interface TitleProps {
@@ -12,4 +12,4 @@ const Title: FC<TitleProps> = ({ children, className }) => {
   return <h3 className={classes}>{children}</h3>;
 };
 
-export default Title;
+export default memo(Title);

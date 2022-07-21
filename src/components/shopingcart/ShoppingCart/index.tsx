@@ -1,5 +1,6 @@
 import { FC } from "react";
-import ShoppimgCartItemsList from "../ShippingCartItemsList";
+import { Title } from "../../common";
+import ShoppimgCartItemsList from "../ShoppingCartItemsList";
 import "./style.scss";
 
 const SideBarModal: FC = () => {
@@ -7,9 +8,7 @@ const SideBarModal: FC = () => {
     <div className="shopping-cart">
       <div style={{ overflow: "scroll", height: "100%" }}>
         <main className="content">
-          <section className="cart">
-            <h1 className="cart-title">4 товара на 100,60 руб.</h1>
-          </section>
+          <Title className="cart-title">4 товара на 100,60 руб.</Title>
           <ShoppimgCartItemsList />
         </main>
       </div>

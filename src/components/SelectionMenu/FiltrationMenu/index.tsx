@@ -10,7 +10,7 @@ const FiltrationMenu = observer(() => {
   const { filtrationType } = selectionStore;
 
   const handleChangeFiltrationType = (type: FiltrationType) => {
-    selectionStore.setFiltrationType(type);
+    selectionStore.filtrationType = type;
   };
 
   return (

@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect, useState } from "react";
+import { FC, ReactNode, useEffect } from "react";
 import ReactDOM from "react-dom";
 
 interface PortalProps {
@@ -6,7 +6,7 @@ interface PortalProps {
 }
 
 const Portal: FC<PortalProps> = ({ children }) => {
-  const [conteiner] = useState(() => document.createElement("div"));
+  const conteiner = document.createElement("div");
   const modalsConteiner = document.getElementById("modals");
   const body = document.querySelector("body");
 

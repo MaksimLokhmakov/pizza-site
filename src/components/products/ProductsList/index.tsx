@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import ProductCard from "../ProductCard";
-import Title from "../../common/Titile";
+import Title from "../../common/Title";
 import { Context } from "../../..";
 import { observer } from "mobx-react-lite";
 import { Routes } from "../../../interfaces/IRoute";
