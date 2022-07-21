@@ -1,48 +1,16 @@
 import { FC } from "react";
-import {
-  Routes,
-  Route,
-  Navigate,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
-import { ProductInfo, ShoppingCart } from "..";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import {
   authRoutes,
   modalRoutes,
   publicRoutes,
 } from "../../utils/consts/routes";
-import Popup from "../modals/Popup";
-import classes from "../../styles/popup.module.scss";
 
 const AppRouter: FC = () => {
   const location = useLocation();
-  const navigate = useNavigate();
   const state = location.state as { backgroundLocation?: Location };
 
   const isAuth: boolean = true;
-
-  const productInfoPopup = (
-    <Popup
-      isOpened={Boolean(state?.backgroundLocation)}
-      onClose={() => navigate(-1)}
-    >
-      <div className={classes.popup}>
-        <ProductInfo />
-      </div>
-    </Popup>
-  );
-
-  const shoppingCartSideBar = (
-    <Popup
-      isOpened={Boolean(state?.backgroundLocation)}
-      onClose={() => navigate(-1)}
-    >
-      <div className={classes.sidebar}>
-        <ShoppingCart />
-      </div>
-    </Popup>
-  );
 
   return (
     <>
