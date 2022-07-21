@@ -1,5 +1,5 @@
 import { FC } from "react";
-import HeaderSearch from "./HeaderSearch";
+import SearchWithAutoComplite from "../search/SearchWithAutoComplite";
 import { Routes } from "../../interfaces/IRoute";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Title, Image, Separator, Chip } from "../common";
@@ -31,7 +31,7 @@ const Header: FC = () => {
           </div>
         </div>
 
-        <HeaderSearch />
+        <SearchWithAutoComplite />
 
         <Link
           to={Routes.SHOPPINGCART_ROUTE}
