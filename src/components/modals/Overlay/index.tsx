@@ -6,10 +6,10 @@ interface OverlayProps {
   visible?: boolean;
 }
 
-const Overlay: FC<OverlayProps> = ({ children, onClick, visible = true }) => {
+const Overlay: FC<OverlayProps> = ({ children, onClick }) => {
   return (
     <>
-      {visible && <div className="overlay" onClick={onClick} />}
+      <div className="overlay" onClick={onClick} />
       {children}
     </>
   );
