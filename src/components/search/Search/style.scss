@@ -1,0 +1,27 @@
+.search-wrapper {
+  width: 100%;
+  padding: 0.4vw 1vw;
+
+  border: 1px solid rgb(220, 220, 220);
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &-input {
+    width: 95%;
+    height: 100%;
+    font-size: 1vw;
+    font-family: Proxima Nova Thin;
+  }
+
+  &-icon {
+    width: 1.3vw;
+    height: 1.3vw;
+    margin-right: 0.5vw;
+  }
+}
+
+.search-wrapper-focus {
+  border-color: transparent;
+}
