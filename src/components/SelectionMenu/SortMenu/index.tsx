@@ -2,13 +2,14 @@ import { useContext, useRef } from "react";
 import { Button, Group, Image, Dropdown } from "../../common";
 import { observer } from "mobx-react-lite";
 import { useHover } from "../../../hooks";
-import { Context } from "../../..";
+import { StoresContext } from "../../StoresProvider";
+import { IStoresContext } from "../../../interfaces";
 import { SortType } from "../../../utils/consts/consts";
 import arrowDownIcon from "../../../assets/icons/Vector.svg";
 import "./style.scss";
 
 const SortMenu = observer(() => {
-  const { selectionStore } = useContext(Context);
+  const { selectionStore } = useContext(StoresContext) as IStoresContext;
   const { sortType } = selectionStore;
   const sortMenuRef = useRef(null);
   const isHover = useHover(sortMenuRef);

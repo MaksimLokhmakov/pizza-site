@@ -1,23 +1,22 @@
-import { observer } from "mobx-react-lite";
 import { useState, useEffect, useContext } from "react";
-import { Context } from "../../..";
-import { ISelectionStore } from "../../../stores/SelectionStore";
+import { observer } from "mobx-react-lite";
+import { StoresContext } from "../../StoresProvider";
+import { IStoresContext } from "../../../interfaces";
 import AutoComplite from "../AutoComplite";
 import Search from "../Search";
 import "./style.scss";
 
 const SearchWithAutoComplite = observer(() => {
-  const { selectionStore }: { selectionStore: ISelectionStore } =
-    useContext(Context);
+  const { selectionStore } = useContext(StoresContext) as IStoresContext;
   const { searchValue } = selectionStore;
-
-  const isSearchNotEmpty = searchValue.length > 0;
 
   const [isOnFocus, setIsOnFocus] = useState(false);
   const [isAutoVisible, setIsAutoVisible] = useState(false);
   const [autocompliteStyles, setAutocompliteStyles] = useState({
     opacity: 0,
   });
+
+  const isSearchNotEmpty = searchValue.length > 0;
 
   useEffect(() => {
     if (isOnFocus) {

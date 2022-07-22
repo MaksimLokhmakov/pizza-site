@@ -7,27 +7,30 @@ import {
   useState,
 } from "react";
 import { useParams } from "react-router-dom";
-import { Context } from "../../..";
+import { StoresContext } from "../../StoresProvider";
+import {
+  IPizza,
+  IStoresContext,
+  IPizzaAddon,
+  IPizzaIngredient,
+} from "../../../interfaces";
 import Button, { ButtonTheme } from "../../Buttons/ButtonPrev";
 import IngredientsList from "../ingredients/IngredientsList";
 import OptionBar from "../../OptionBar";
 import AddonsList from "../addons/AddonsList";
 import Image from "../../common/Image";
-import IPizza from "../../../interfaces/IPizza";
 import { getPizzaImgClass } from "../../../utils/getPizzaImgClass";
 import {
   optionBarPizzaDoughOptions,
   optionBarPizzaSizeOptions,
 } from "../../../utils/consts/consts";
 import "./style.scss";
-import IPizzaAddon from "../../../interfaces/IPizzaAddon";
-import IPizzaIngredient from "../../../interfaces/IPizzaIngredient";
 
 const ProductInfo: FC = () => {
-  const { pizzaStore } = useContext(Context);
+  const { pizzaStore } = useContext(StoresContext) as IStoresContext;
   const params = useParams();
 
-  const currentPizza: IPizza = pizzaStore.getPizzaByID(params.id);
+  const currentPizza = pizzaStore.getPizzaByID(params.id);
   const { id, name, type, ingredients, variants, addons } = currentPizza;
 
   const [options, setOptions] = useState({

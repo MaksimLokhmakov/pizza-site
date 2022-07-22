@@ -1,12 +1,6 @@
 import { makeAutoObservable } from "mobx";
+import { IPizzaStore } from "../interfaces";
 import IPizza from "../interfaces/IPizza";
-
-// * temp
-export interface IPizzaStore {
-  pizzas: IPizza[];
-
-  getPizzaByID: (currentId: string) => IPizza | undefined;
-}
 
 export default class PizzaStore implements IPizzaStore {
   _pizzas: IPizza[];
@@ -538,7 +532,16 @@ export default class PizzaStore implements IPizzaStore {
     this._pizzas = currentValue;
   }
 
-  getPizzaByID(currentId: string) {
-    return this._pizzas?.find((pizza) => pizza.id === currentId);
+  getPizzaByID(currentId: string | undefined) {
+    if (!currentId) {
+      return this._pizzas[0];
+    }
+
+    const pizza = this._pizzas.find((pizza) => pizza.id === currentId);
+    if (!pizza) {
+      return this._pizzas[0];
+    }
+
+    return pizza;
   }
 }

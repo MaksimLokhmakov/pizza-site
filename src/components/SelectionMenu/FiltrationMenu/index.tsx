@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import { Chip, Group, Button } from "../../common";
-import { FiltrationType } from "../../../utils/consts/consts";
 import { observer } from "mobx-react-lite";
-import { Context } from "../../..";
+import { StoresContext } from "../../StoresProvider";
+import { IStoresContext } from "../../../interfaces";
+import { FiltrationType } from "../../../utils/consts/consts";
 import "./style.scss";
 
 const FiltrationMenu = observer(() => {
-  const { selectionStore } = useContext(Context);
+  const { selectionStore } = useContext(StoresContext) as IStoresContext;
   const { filtrationType } = selectionStore;
 
   const handleChangeFiltrationType = (type: FiltrationType) => {

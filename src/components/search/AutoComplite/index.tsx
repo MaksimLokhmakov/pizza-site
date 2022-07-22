@@ -1,13 +1,11 @@
 import { FC, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Context } from "../../..";
-import { Routes } from "../../../interfaces/IRoute";
 import { observer } from "mobx-react-lite";
-import IPizza from "../../../interfaces/IPizza";
+import { StoresContext } from "../../StoresProvider";
+import { IStoresContext, IPizza } from "../../../interfaces";
+import { Routes } from "../../../interfaces/IRoute";
 import AutoCompliteProductCart from "../AutoCompliteProductCart";
 import "./style.scss";
-import { IPizzaStore } from "../../../stores/PizzaStore";
-import { ISelectionStore } from "../../../stores/SelectionStore";
 
 interface AutoCompliteProps {
   visible: boolean;
@@ -15,11 +13,9 @@ interface AutoCompliteProps {
 }
 
 const AutoComplite: FC<AutoCompliteProps> = observer(({ visible, style }) => {
-  const {
-    pizzaStore,
-    selectionStore,
-  }: { pizzaStore: IPizzaStore; selectionStore: ISelectionStore } =
-    useContext(Context);
+  const { pizzaStore, selectionStore } = useContext(
+    StoresContext
+  ) as IStoresContext;
   const location = useLocation();
 
   const filteredPizzas =

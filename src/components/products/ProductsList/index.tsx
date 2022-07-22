@@ -1,15 +1,15 @@
 import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
-import ProductCard from "../ProductCard";
-import Title from "../../common/Title";
-import { Context } from "../../..";
 import { observer } from "mobx-react-lite";
+import { Title } from "../../common";
+import ProductCard from "../ProductCard";
+import { StoresContext } from "../../StoresProvider";
+import { IStoresContext, IPizza } from "../../../interfaces";
 import { Routes } from "../../../interfaces/IRoute";
-import IPizza from "../../../interfaces/IPizza";
 import "./style.scss";
 
 const ProductsList = observer(() => {
-  const { pizzaStore } = useContext(Context);
+  const { pizzaStore } = useContext(StoresContext) as IStoresContext;
   const { pizzas } = pizzaStore;
   const location = useLocation();
 

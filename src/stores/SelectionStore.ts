@@ -1,11 +1,6 @@
 import { makeAutoObservable } from "mobx";
+import { ISelectionStore } from "../interfaces";
 import { FiltrationType, SortType } from "../utils/consts/consts";
-
-export interface ISelectionStore {
-  searchValue: string;
-  filtrationType: FiltrationType;
-  sortType: SortType;
-}
 
 export default class SelectionStore implements ISelectionStore {
   _searchValue: string;

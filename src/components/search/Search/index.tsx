@@ -1,10 +1,10 @@
 import { ChangeEvent, FC, useContext } from "react";
-import { observer } from "mobx-react-lite";
-import { Context } from "../../..";
 import { Chip, Image } from "../../common";
+import { observer } from "mobx-react-lite";
+import { StoresContext } from "../../StoresProvider";
+import { IStoresContext } from "../../../interfaces";
 import searchIcon from "../../../assets/icons/search_FILL0_wght400_GRAD0_opsz48.svg";
 import "./style.scss";
-import { ISelectionStore } from "../../../stores/SelectionStore";
 
 interface SearchProps {
   isOnFocus: boolean;
@@ -13,8 +13,7 @@ interface SearchProps {
 }
 
 const Search: FC<SearchProps> = observer(({ isOnFocus, onFocus, onBlur }) => {
-  const { selectionStore }: { selectionStore: ISelectionStore } =
-    useContext(Context);
+  const { selectionStore } = useContext(StoresContext) as IStoresContext;
   const { searchValue } = selectionStore;
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
