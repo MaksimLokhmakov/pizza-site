@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react";
+import classes from "../../../utils/classes";
 import "./style.scss";
 
 interface GroupProps {
@@ -8,13 +9,9 @@ interface GroupProps {
 }
 
 const Group: FC<GroupProps> = ({ children, className, vertical }) => {
-  const classes = [
-    "group-default",
-    className,
-    vertical && "group-vertical",
-  ].join(" ");
+  const classNames = classes(["group-default", className, { vertical }]);
 
-  return <div className={classes}>{children}</div>;
+  return <div className={classNames}>{children}</div>;
 };
 
 export default Group;

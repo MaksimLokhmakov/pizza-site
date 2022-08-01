@@ -532,6 +532,17 @@ export default class PizzaStore implements IPizzaStore {
     this._pizzas = currentValue;
   }
 
+  getFilteredBySearchPizzas(searchValue: string) {
+    const lcSearchValue = searchValue.toLowerCase();
+
+    const filteredPizzas = this._pizzas.filter((pizza) => {
+      const lcName = pizza.name.toLowerCase();
+      return lcName.includes(lcSearchValue);
+    });
+
+    return filteredPizzas;
+  }
+
   getPizzaByID(currentId: string | undefined) {
     if (!currentId) {
       return this._pizzas[0];

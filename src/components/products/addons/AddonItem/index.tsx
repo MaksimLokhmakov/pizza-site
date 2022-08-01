@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Button, Image, Title } from "../../../common";
+import classes from "../../../../utils/classes";
 import IPizzaAddon from "../../../../interfaces/IPizzaAddon";
 import selectedIcon from "../../../../assets/icons/selected-icon.svg";
 import "./style.scss";
@@ -16,7 +17,7 @@ const AddonItem: FC<AddonItemProps> = ({
   dataSelected = false,
 }) => {
   const { name, price, image } = addon;
-  const classes = ["addon df dc"].join(" ");
+  const classNames = classes(["addon df dc"]);
 
   const handleClick = () => {
     onClick && onClick(addon);
@@ -24,7 +25,7 @@ const AddonItem: FC<AddonItemProps> = ({
 
   return (
     <Button
-      className={classes}
+      className={classNames}
       dataSelected={dataSelected}
       buttonType="button"
       onClick={handleClick}
@@ -32,6 +33,7 @@ const AddonItem: FC<AddonItemProps> = ({
       <Image className="addon-image" src={image} alt={name} />
       <Title className="addon-title">{name}</Title>
       <span className="addon-price">{price.toFixed(2) + " руб."}</span>
+
       {dataSelected && (
         <Image
           src={selectedIcon}

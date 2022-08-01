@@ -1,4 +1,5 @@
 import { FC, ReactNode, useState, useEffect } from "react";
+import classes from "../../../utils/classes";
 import "./style.scss";
 
 interface DropdownProps {
@@ -14,14 +15,14 @@ const Dropdown: FC<DropdownProps> = ({ children, visible, className }) => {
     setOpacity(1);
   }, []);
 
-  const classes = ["dropdown-default", className].join(" ");
+  const classNames = classes(["dropdown-default", className]);
 
   if (!visible) {
     return null;
   }
 
   return (
-    <div style={{ opacity: opacity }} className={classes}>
+    <div style={{ opacity: opacity }} className={classNames}>
       {children}
     </div>
   );

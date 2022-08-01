@@ -10,25 +10,16 @@ article.product {
   cursor: pointer;
 
   &:hover {
-    img {
+    .img-m {
       transform: translateY(0.3vw);
     }
   }
 
   main {
-    // margin-bottom: 2vw;
     font-size: 1vw;
 
-    img {
-      transition-duration: 200ms;
-      width: 16.5vw;
-      height: 16.5vw;
-    }
-
-    .product-name {
-      width: 100%;
-      text-align: left;
-      font-size: 1.5vw;
+    .product-title {
+      font-size: 1.4vw;
       padding: 0 0 0.5vw;
     }
   }
@@ -36,11 +27,19 @@ article.product {
   footer {
     .product-control-price {
       font-size: 1.4vw;
+      width: auto;
+    }
+
+    .product-add-chip {
+      padding: 0.55vw 1.6vw;
     }
   }
 }
 
 .img-m {
+  height: 16.5vw;
+  width: 16.5vw;
+
   margin-top: 1vw;
   margin-left: 1vw;
 }

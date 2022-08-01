@@ -6,7 +6,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { StoresContext } from "../../StoresProvider";
 import {
   IPizza,
@@ -14,11 +14,10 @@ import {
   IPizzaAddon,
   IPizzaIngredient,
 } from "../../../interfaces";
-import Button, { ButtonTheme } from "../../Buttons/ButtonPrev";
 import IngredientsList from "../ingredients/IngredientsList";
 import OptionBar from "../../OptionBar";
 import AddonsList from "../addons/AddonsList";
-import Image from "../../common/Image";
+import { Image, Button, Chip } from "../../common";
 import { getPizzaImgClass } from "../../../utils/getPizzaImgClass";
 import {
   optionBarPizzaDoughOptions,
@@ -27,8 +26,11 @@ import {
 import "./style.scss";
 
 const ProductInfo: FC = () => {
-  const { pizzaStore } = useContext(StoresContext) as IStoresContext;
+  const { pizzaStore, shoppingCartStore } = useContext(
+    StoresContext
+  ) as IStoresContext;
   const params = useParams();
+  const navigate = useNavigate();
 
   const currentPizza = pizzaStore.getPizzaByID(params.id);
   const { id, name, type, ingredients, variants, addons } = currentPizza;
@@ -133,6 +135,13 @@ const ProductInfo: FC = () => {
     [formedPizza.ingredients]
   );
 
+  const handleSubmit = () => {
+    const shoppingCartProducts = shoppingCartStore.pizzas;
+
+    shoppingCartStore.pizzas = [...shoppingCartProducts, formedPizza];
+    navigate(-1);
+  };
+
   const addonsPriceСonsideringSize = useMemo(() => {
     const addedValueByDefault: number = 0.4;
     const factor: number = options.size;
@@ -236,11 +245,14 @@ const ProductInfo: FC = () => {
           </main>
         </div>
 
-        <footer className="form__right-footer df">
-          <Button theme={ButtonTheme.COLLORING_LIGHT_DEEP}>
+        <Button className="product-info-submit-button" onClick={handleSubmit}>
+          <Chip
+            className="product-info-submit-chip"
+            theme="colloring-light-deep"
+          >
             {buttonChild}
-          </Button>
-        </footer>
+          </Chip>
+        </Button>
       </div>
     </div>
   );

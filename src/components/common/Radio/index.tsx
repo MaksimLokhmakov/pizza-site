@@ -1,4 +1,5 @@
 import { ChangeEvent, FC, ReactNode, useId } from "react";
+import classes from "../../../utils/classes";
 import "./style.scss";
 
 interface RadioProps {
@@ -21,7 +22,7 @@ const Radio: FC<RadioProps> = ({
   className,
 }) => {
   const id = useId();
-  const classes = ["radio-label-default", className].join(" ");
+  const classNames = classes(["radio-label-default", className]);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => onChange(e, value);
 
   return (
@@ -36,7 +37,7 @@ const Radio: FC<RadioProps> = ({
         disabled={disabled}
         onChange={handleChange}
       />
-      <label htmlFor={id} className={classes}>
+      <label htmlFor={id} className={classNames}>
         {children}
       </label>
     </>

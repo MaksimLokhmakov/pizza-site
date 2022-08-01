@@ -1,4 +1,5 @@
 import { FC } from "react";
+import classes from "../../../utils/classes";
 import "./style.scss";
 
 interface SeparatorProps {
@@ -7,13 +8,13 @@ interface SeparatorProps {
 }
 
 const Separator: FC<SeparatorProps> = ({ className, vertical }) => {
-  const classes = [
+  const classNames = classes([
     "separator-default",
     className,
     vertical && "separator-vertical",
-  ].join(" ");
+  ]);
 
-  return <div className={classes} />;
+  return <div className={classNames} />;
 };
 
 export default Separator;

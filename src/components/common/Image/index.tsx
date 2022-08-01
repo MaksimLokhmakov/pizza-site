@@ -1,4 +1,5 @@
 import { FC, memo } from "react";
+import classes from "../../../utils/classes";
 import "./style.scss";
 
 interface ImageProps {
@@ -25,14 +26,14 @@ const Image: FC<ImageProps> = ({
   const handleClick = () => {
     onClick && onClick();
   };
-  const classes = [className, "image-default"].join(" ");
+  const classNames = classes([className, "image-default"]);
 
   return (
     <img
       src={src}
       alt={alt}
       onClick={handleClick}
-      className={classes}
+      className={classNames}
       width={width}
       height={height}
     />

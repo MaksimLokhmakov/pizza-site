@@ -1,4 +1,5 @@
-import { FC, memo, ReactNode } from "react";
+import { memo, ReactNode, forwardRef } from "react";
+import classes from "../../../utils/classes";
 import "./style.scss";
 
 interface ButtonProps {
@@ -8,34 +9,32 @@ interface ButtonProps {
   disabled?: boolean;
   buttonType?: "submit" | "button" | "reset" | undefined;
   dataSelected?: boolean;
-  href?: string;
 }
 
-const Button: FC<ButtonProps> = ({
-  children,
-  onClick,
-  className,
-  disabled,
-  buttonType,
-  dataSelected,
-}) => {
-  const handleClick = () => {
-    onClick && onClick();
-  };
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    { children, onClick, className, disabled, buttonType, dataSelected },
+    ref
+  ) => {
+    const handleClick = () => {
+      onClick && onClick();
+    };
 
-  const classes = ["button-default", className].join(" ");
+    const classNames = classes(["button-default", className]);
 
-  return (
-    <button
-      onClick={handleClick}
-      data-selected={dataSelected}
-      className={classes}
-      disabled={disabled}
-      type={buttonType}
-    >
-      {children}
-    </button>
-  );
-};
+    return (
+      <button
+        ref={ref}
+        onClick={handleClick}
+        data-selected={dataSelected}
+        className={classNames}
+        disabled={disabled}
+        type={buttonType}
+      >
+        {children}
+      </button>
+    );
+  }
+);
 
 export default memo(Button);

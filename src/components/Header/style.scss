@@ -30,42 +30,4 @@
     right: 5%;
     margin: 2vw 0;
   }
-
-  &-button {
-    height: 2.219vw;
-    padding: 0.4vw 1.2vw;
-    justify-content: center;
-    align-items: center;
-
-    & span {
-      font-size: 1vw;
-    }
-
-    &-separator {
-      margin: 0 0.5vw;
-    }
-
-    &-img {
-      position: absolute;
-      right: 0.6vw;
-      transform: translate(-0.3vw);
-      opacity: 0;
-      width: 1.3vw;
-      height: 1.3vw;
-    }
-
-    &-counter {
-      transition: 200ms ease-in-out;
-      opacity: 1;
-    }
-
-    &:hover &-img {
-      transform: translate(0);
-      opacity: 1;
-    }
-
-    &:hover &-counter {
-      opacity: 0;
-    }
-  }
 }

@@ -60,37 +60,17 @@ const Slider: FC<SliderProps> = ({ children, hoverOffsetValue = 20 }) => {
     return width;
   }, [elements]);
 
-  const handleMouseEnterBackButton = () => {
-    setHoverOffset(hoverOffsetValue);
-  };
-  const handleMouseLeaveButton = () => {
-    setHoverOffset(0);
-  };
+  const isNotEndOfSlider = offset > totalOffset + elementsWindowWidth;
+
   const handleClickBackButton = () => {
     if (offset !== 0) setCurrentElementIndex((prev) => prev - 1);
   };
-
-  const handleMouseEnterForwardButton = () => {
-    if (offset > totalOffset + elementsWindowWidth) {
-      setHoverOffset(-hoverOffsetValue);
-    }
-  };
   const handleClickForwardButton = () => {
-    if (offset > totalOffset + elementsWindowWidth)
-      setCurrentElementIndex((prev) => prev + 1);
+    if (isNotEndOfSlider) setCurrentElementIndex((prev) => prev + 1);
   };
 
-  const isHoverBackButton = useHover(
-    backButtonRef,
-    handleMouseEnterBackButton,
-    handleMouseLeaveButton
-  );
-
-  const isHoverForwardButton = useHover(
-    forwardButtonRef,
-    handleMouseEnterForwardButton,
-    handleMouseLeaveButton
-  );
+  const isHoverBackButton = useHover(backButtonRef);
+  const isHoverForwardButton = useHover(forwardButtonRef);
 
   useEffect(() => {
     let currentOffset = 0;
@@ -109,12 +89,26 @@ const Slider: FC<SliderProps> = ({ children, hoverOffsetValue = 20 }) => {
     setOffset(currentOffset);
   }, [currentElementIndex]);
 
+  useEffect(() => {
+    if (isHoverBackButton && offset !== 0) {
+      return setHoverOffset(hoverOffsetValue);
+    }
+
+    setHoverOffset(0);
+  }, [isHoverBackButton]);
+
+  useEffect(() => {
+    if (isHoverForwardButton && isNotEndOfSlider) {
+      return setHoverOffset(-hoverOffsetValue);
+    }
+
+    setHoverOffset(0);
+  }, [isHoverForwardButton]);
+
   const forwardButtonImageClasses = classes([
     "slider-arrow",
     "slider-arrow-forward",
-    isHoverForwardButton && offset > totalOffset + elementsWindowWidth
-      ? "visible"
-      : "",
+    isHoverForwardButton && isNotEndOfSlider ? "visible" : "",
   ]);
 
   const backButtonImageClasses = classes([
@@ -138,7 +132,7 @@ const Slider: FC<SliderProps> = ({ children, hoverOffsetValue = 20 }) => {
       <Button
         onClick={handleClickForwardButton}
         ref={forwardButtonRef}
-        className="slider-button slider-button-forward"
+        className="slider-button-forward slider-button"
       >
         <Image src={arrow} alt="arrow" className={forwardButtonImageClasses} />
       </Button>
@@ -146,7 +140,7 @@ const Slider: FC<SliderProps> = ({ children, hoverOffsetValue = 20 }) => {
       <Button
         onClick={handleClickBackButton}
         ref={backButtonRef}
-        className="slider-button slider-button-back"
+        className="slider-button-back slider-button"
       >
         <Image src={arrow} alt="arrow" className={backButtonImageClasses} />
       </Button>

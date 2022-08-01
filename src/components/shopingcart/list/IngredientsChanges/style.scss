@@ -1,0 +1,20 @@
+.ingredients-chenges {
+  text-transform: lowercase;
+
+  .sign {
+    width: 0.8vw;
+    height: 0.8vw;
+
+    position: relative;
+    top: 0.13vw;
+
+    display: inline-flex;
+    align-items: center;
+
+    &-img {
+      width: 0.7vw;
+      height: 0.7vw;
+      margin-right: 0.15vw;
+    }
+  }
+}

@@ -37,8 +37,8 @@ const IngredientsList = ({
             <IngredientItem
               key={key}
               ingredient={currentIngredient}
-              isEditable={isEditable}
-              isDelisted={isIngredientDelisted}
+              aditable={isEditable}
+              delisted={isIngredientDelisted}
               onClick={onClickIngredient}
             />
             {!isLast && ", "}

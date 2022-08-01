@@ -1,12 +1,10 @@
 .slider {
   position: relative;
-  width: 100%;
-  height: auto;
 
   &-window {
-    width: 100%;
     display: flex;
-    // overflow: hidden;
+    overflow-y: visible;
+    overflow-x: clip;
 
     .all-cards-conteiner {
       display: flex;

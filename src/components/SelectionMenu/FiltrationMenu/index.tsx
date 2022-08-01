@@ -4,6 +4,7 @@ import { observer } from "mobx-react-lite";
 import { StoresContext } from "../../StoresProvider";
 import { IStoresContext } from "../../../interfaces";
 import { FiltrationType } from "../../../utils/consts/consts";
+import classes from "../../../utils/classes";
 import "./style.scss";
 
 const FiltrationMenu = observer(() => {
@@ -17,12 +18,12 @@ const FiltrationMenu = observer(() => {
   return (
     <Group className="button-filtration-group">
       {Object.values(FiltrationType).map((type) => {
-        const isFilterActive = filtrationType === type;
-        const classes = ["sort-chip", isFilterActive ? "active" : ""].join(" ");
+        const active = filtrationType === type;
+        const classNames = classes(["sort-chip", { active }]);
 
         return (
           <Button key={type} onClick={() => handleChangeFiltrationType(type)}>
-            <Chip className={classes} theme="colloring-gray">
+            <Chip className={classNames} theme="colloring-gray">
               {type}
             </Chip>
           </Button>

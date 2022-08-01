@@ -1,6 +1,5 @@
 import { FC, memo } from "react";
-import Button, { ButtonTheme } from "../../Buttons/ButtonPrev";
-import Image from "../../common/Image";
+import { Button, Chip, Image, Title } from "../../common";
 import IngredientsList from "../ingredients/IngredientsList";
 import IPizza from "../../../interfaces/IPizza";
 import "./style.scss";
@@ -21,17 +20,19 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
         <main>
           <Image src={image} alt="pizza" className="img-m" />
 
-          <div className="product-name">{name}</div>
+          <Title className="product-title">{name}</Title>
 
           <IngredientsList ingredients={ingredients} />
         </main>
 
         <footer className="df sp-b">
-          <div className="product-control-price">от {fixedPrice} руб.</div>
+          <span className="product-control-price">от {fixedPrice} руб.</span>
 
-          <div>
-            <Button theme={ButtonTheme.COLLORING_LIGHT}>Выбрать</Button>
-          </div>
+          <Button>
+            <Chip className="product-add-chip" theme="colloring-light">
+              Выбрать
+            </Chip>
+          </Button>
         </footer>
       </article>
     </>

@@ -6,6 +6,12 @@
     background-color: #ffffff;
     margin-bottom: 0.5vw;
 
+    main {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+    }
+
     .item-img {
       width: 4vw;
       height: 4vw;
@@ -14,11 +20,30 @@
 
     &-description {
       position: relative;
-      top: -0.3vw;
+      width: 100%;
+
+      .title-button {
+        opacity: 0.5;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        &-delete-ico {
+          width: 1.2vw;
+          height: 1.2vw;
+          transform: rotate(45deg);
+        }
+
+        &-edit-ico {
+          width: 0.8vw;
+          height: 0.8vw;
+        }
+      }
+
       .description-title {
         position: relative;
-        top: 0.3vw;
-        font-size: 1.2vw;
+        font-size: 1.1vw;
 
         & + p {
           padding: 0.2vw 0;
@@ -26,7 +51,7 @@
       }
 
       p {
-        font-size: 0.9vw;
+        font-size: 0.8vw;
       }
     }
 
@@ -37,7 +62,7 @@
       align-items: center;
 
       .footer-price {
-        font-size: 1.2vw;
+        font-size: 1.1vw;
       }
 
       .footer-counter {
@@ -72,23 +97,8 @@
 
     .item-separator {
       margin: 0.5vw 0 0.8vw;
+      height: 2px;
+      background-color: rgb(245, 245, 245);
     }
-  }
-}
-
-.sign {
-  width: 0.8vw;
-  height: 0.8vw;
-
-  position: relative;
-  top: 0.13vw;
-
-  display: inline-flex;
-  align-items: center;
-
-  &-img {
-    width: 0.7vw;
-    height: 0.7vw;
-    margin-right: 0.15vw;
   }
 }

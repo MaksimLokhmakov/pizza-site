@@ -1,15 +1,14 @@
 import { FC } from "react";
 import SearchWithAutoComplite from "../search/SearchWithAutoComplite";
 import { Routes } from "../../interfaces/IRoute";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Title, Image, Separator, Chip } from "../common";
-import arrow from "../../assets/icons/arrow_right_alt_FILL0_wght400_GRAD0_opsz48.svg";
+import { useNavigate } from "react-router-dom";
+import { Title, Image, Separator } from "../common";
+import HeaderShoppingCartButton from "./HeaderShoppingCartButton";
 import logo from "../../assets/images/logo.svg";
 import "./style.scss";
 
 const Header: FC = () => {
   const navigate = useNavigate();
-  const location = useLocation();
 
   const navigateToShopPage = () => {
     navigate(Routes.SHOP_ROUTE);
@@ -33,17 +32,7 @@ const Header: FC = () => {
 
         <SearchWithAutoComplite />
 
-        <Link
-          to={Routes.SHOPPINGCART_ROUTE}
-          state={{ backgroundLocation: location }}
-        >
-          <Chip className="header-button" theme="colloring-light-deep">
-            Корзина
-            <Separator vertical className="header-button-separator" />
-            <span className="header-button-counter">{5}</span>
-            <Image src={arrow} alt={arrow} className="header-button-img" />
-          </Chip>
-        </Link>
+        <HeaderShoppingCartButton />
       </header>
 
       <Separator className="header-separator" />

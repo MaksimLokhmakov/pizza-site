@@ -1,4 +1,5 @@
 import { FC, memo, ReactNode } from "react";
+import classes from "../../../utils/classes";
 import "./style.scss";
 
 type ChipTheme =
@@ -29,10 +30,10 @@ const Chip: FC<ChipProps> = ({
   style,
   ariaHidden,
 }) => {
-  const classes = ["chip-default", className, theme, shape].join(" ");
+  const classNames = classes(["chip-default", className, theme, shape]);
 
   return (
-    <div style={style} className={classes} aria-hidden={ariaHidden}>
+    <div style={style} className={classNames} aria-hidden={ariaHidden}>
       {children}
     </div>
   );

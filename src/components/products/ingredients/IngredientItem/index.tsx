@@ -1,40 +1,38 @@
+import Button from "../../../common/Button";
+import classes from "../../../../utils/classes";
 import IPizzaIngredient from "../../../../interfaces/IPizzaIngredient";
 import deleteIcon from "../../../../assets/icons/delete.svg";
 import returnIcon from "../../../../assets/icons/return.svg";
-import Button from "../../../common/Button";
 import Image from "../../../common/Image";
 import "./style.scss";
 
 type IngredientItemProps = {
   ingredient: IPizzaIngredient;
-  isEditable?: boolean;
-  isDelisted?: boolean;
+  aditable?: boolean;
+  delisted?: boolean;
   onClick?: (ingredient: IPizzaIngredient) => void;
 };
 
 const IngredientItem = ({
   ingredient,
-  isEditable,
-  isDelisted,
+  aditable,
+  delisted,
   onClick,
 }: IngredientItemProps) => {
   const { name, required } = ingredient;
-  const currentIcon = isDelisted ? returnIcon : deleteIcon;
-  const currentStyle = isDelisted ? "ingredient-unactive" : "ingredient-active";
+  const currentIcon = delisted ? returnIcon : deleteIcon;
+  const classNames = classes(["ingredient-button", { delisted }, !delisted && "aditable"]);
 
   const handleClick = () => {
     onClick && onClick(ingredient);
   };
 
-  if (!isEditable || required) {
+  if (!aditable || required) {
     return <>{name}</>;
   }
 
   return (
-    <Button
-      className={["ingredient-button", currentStyle].join(" ")}
-      onClick={handleClick}
-    >
+    <Button className={classNames} onClick={handleClick}>
       {name}
       <Image src={currentIcon} alt="delete" className="ingredient-icon" />
     </Button>

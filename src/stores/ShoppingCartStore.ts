@@ -1,21 +1,13 @@
 import { makeAutoObservable } from "mobx";
+import IShoppingCartStore from "../interfaces/IShoppingCartStore";
 import IPizza from "../interfaces/IPizza";
-
-interface IShoppingCartStore {
-  pizzas: IPizza[];
-
-  getPizzaPrice: (pizza: IPizza) => number;
-  getPizzasCount: () => number;
-  getPizzasPrice: () => number;
-}
-
 export default class ShoppingCartStore implements IShoppingCartStore {
   _pizzas: IPizza[];
   private _localStoreKey: string;
 
   constructor() {
+    this._localStoreKey = "shopping-cart-data";
     this._pizzas = this.getLocalStoreData();
-    this._localStoreKey = "shoppingCartData";
     makeAutoObservable(this);
   }
 
@@ -56,6 +48,8 @@ export default class ShoppingCartStore implements IShoppingCartStore {
   private getLocalStoreData() {
     const stringValue = localStorage.getItem(this._localStoreKey);
 
+    console.log(stringValue);
+
     if (stringValue) {
       return JSON.parse(stringValue);
     }
@@ -66,6 +60,6 @@ export default class ShoppingCartStore implements IShoppingCartStore {
   private setLocalStoreData(currentData: IPizza[]) {
     const currentStringData = JSON.stringify(currentData);
 
-    localStorage.setItem(currentStringData, this._localStoreKey);
+    localStorage.setItem(this._localStoreKey, currentStringData);
   }
 }
