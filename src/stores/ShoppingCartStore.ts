@@ -1,28 +1,80 @@
 import { makeAutoObservable } from "mobx";
+import IShoppingCartProduct from "../interfaces/IShoppingCartProduct";
 import IShoppingCartStore from "../interfaces/IShoppingCartStore";
 import IPizza from "../interfaces/IPizza";
 export default class ShoppingCartStore implements IShoppingCartStore {
-  _pizzas: IPizza[];
-  private _localStoreKey: string;
+  _products: IShoppingCartProduct[];
+  private _localStoreProductsKey: string;
 
   constructor() {
-    this._localStoreKey = "shopping-cart-data";
-    this._pizzas = this.getLocalStoreData();
+    this._localStoreProductsKey = "shopping-cart-products";
+    this._products = this.getLocalStoreData();
+
     makeAutoObservable(this);
   }
 
-  get pizzas() {
-    return this._pizzas;
+  get products() {
+    return this._products;
   }
 
-  set pizzas(pizzas: IPizza[]) {
-    this._pizzas = pizzas;
-    this.setLocalStoreData(pizzas);
+  increaseCounter(product: IShoppingCartProduct) {
+    if (product.counter === 12) {
+      return;
+    }
+
+    product.counter += 1;
+
+    this.setLocalStoreData();
   }
 
-  getPizzaPrice(pizza: IPizza) {
-    const pizzaVariantPrice = pizza.variants[0].price;
-    const addonsPrice = pizza.addons.reduce((price, addon) => {
+  decreaseCounter(product: IShoppingCartProduct) {
+    product.counter -= 1;
+
+    if (product.counter === 0) {
+      this.removeProduct(product);
+    }
+
+    this.setLocalStoreData();
+  }
+
+  isPizzasEqual(fPizza: IPizza, sPizza: IPizza) {
+    const fPizzaSortedString = JSON.stringify(fPizza).split("").sort().join("");
+    const sPizzaSortedString = JSON.stringify(sPizza).split("").sort().join("");
+    const isEqual = fPizzaSortedString === sPizzaSortedString;
+
+    return isEqual;
+  }
+
+  addProduct(pizza: IPizza) {
+    let isPizzaInShoppingCart = false;
+
+    this._products.forEach((product) => {
+      if (this.isPizzasEqual(pizza, product.product)) {
+        isPizzaInShoppingCart = true;
+        this.increaseCounter(product);
+      }
+    });
+
+    if (!isPizzaInShoppingCart) {
+      this._products.push({ product: pizza, counter: 1 });
+    }
+
+    this.setLocalStoreData();
+  }
+
+  removeProduct(cProduct: IShoppingCartProduct) {
+    this._products = this._products.filter((product) => {
+      const isEqual = this.isPizzasEqual(product.product, cProduct.product);
+
+      return !isEqual;
+    });
+
+    this.setLocalStoreData();
+  }
+
+  getProductPrice(product: IShoppingCartProduct) {
+    const pizzaVariantPrice = product.product.variants[0].price;
+    const addonsPrice = product.product.addons.reduce((price, addon) => {
       return price + addon.price;
     }, 0);
 
@@ -31,24 +83,24 @@ export default class ShoppingCartStore implements IShoppingCartStore {
     return fixedPrice;
   }
 
-  getPizzasPrice() {
-    const price = this._pizzas.reduce((price, pizza) => {
-      return price + this.getPizzaPrice(pizza);
+  getProductsPrice() {
+    const price = this._products.reduce((price, product) => {
+      return price + this.getProductPrice(product) * product.counter;
     }, 0);
 
-    const fixedPrice = Number(price.toFixed(2));
-
-    return fixedPrice;
+    return Number(price.toFixed(2));
   }
 
-  getPizzasCount() {
-    return this._pizzas.length;
+  getProductsCount() {
+    const pizzazCount = this._products.reduce((count, { counter }) => {
+      return count + counter;
+    }, 0);
+
+    return pizzazCount;
   }
 
   private getLocalStoreData() {
-    const stringValue = localStorage.getItem(this._localStoreKey);
-
-    console.log(stringValue);
+    const stringValue = localStorage.getItem(this._localStoreProductsKey);
 
     if (stringValue) {
       return JSON.parse(stringValue);
@@ -57,9 +109,9 @@ export default class ShoppingCartStore implements IShoppingCartStore {
     return [];
   }
 
-  private setLocalStoreData(currentData: IPizza[]) {
-    const currentStringData = JSON.stringify(currentData);
+  private setLocalStoreData() {
+    const currentStringData = JSON.stringify(this._products);
 
-    localStorage.setItem(this._localStoreKey, currentStringData);
+    localStorage.setItem(this._localStoreProductsKey, currentStringData);
   }
 }

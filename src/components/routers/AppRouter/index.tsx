@@ -1,12 +1,9 @@
-import { FC } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import {
-  authRoutes,
-  modalRoutes,
-  publicRoutes,
-} from "../../utils/consts/routes";
+import { authRoutes, publicRoutes } from "../../../utils/consts/routes";
+import ModalRouter from "../ModalRouter";
+import { observer } from "mobx-react-lite";
 
-const AppRouter: FC = () => {
+const AppRouter = observer(() => {
   const location = useLocation();
   const state = location.state as { backgroundLocation?: Location };
 
@@ -16,24 +13,24 @@ const AppRouter: FC = () => {
     <>
       <Routes location={state?.backgroundLocation || location}>
         {publicRoutes.map((route) => {
-          return <Route key={route.path} {...route} />;
+          const { path, Component } = route;
+
+          return <Route key={path} path={path} element={<Component />} />;
         })}
+
         {isAuth &&
           authRoutes.map((route) => {
-            return <Route key={route.path} {...route} />;
+            const { path, Component } = route;
+
+            return <Route key={path} path={path} element={<Component />} />;
           })}
+
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 
-      {state?.backgroundLocation && (
-        <Routes>
-          {modalRoutes.map((route) => {
-            return <Route key={route.path} {...route} />;
-          })}
-        </Routes>
-      )}
+      <ModalRouter />
     </>
   );
-};
+});
 
 export default AppRouter;

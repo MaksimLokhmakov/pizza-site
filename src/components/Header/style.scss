@@ -1,5 +1,5 @@
 .header {
-  position: relative;
+  position: sticky;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,6 +8,7 @@
   background-color: #fff;
   transition: ease-in-out;
   transition-duration: 200ms;
+  margin: 0 0 2vw 0;
 
   &-title {
     font-size: 1.8vw;

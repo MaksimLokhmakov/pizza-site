@@ -26,11 +26,11 @@ const IngredientsList = ({
         const isIngredientDelisted = !formedIngredients.find(
           (current) => current.id === ingredient.id
         );
-        let currentIngredient = { ...ingredient };
 
-        if (isFirst) {
-          currentIngredient.name = ucFirst(currentIngredient.name);
-        }
+        const currentIngredient = { ...ingredient };
+        currentIngredient.name = isFirst
+          ? currentIngredient.name
+          : currentIngredient.name.toLowerCase();
 
         return (
           <>

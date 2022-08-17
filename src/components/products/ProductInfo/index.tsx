@@ -6,24 +6,27 @@ import {
   useMemo,
   useState,
 } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { StoresContext } from "../../StoresProvider";
 import {
   IPizza,
   IStoresContext,
   IPizzaAddon,
   IPizzaIngredient,
 } from "../../../interfaces";
-import IngredientsList from "../ingredients/IngredientsList";
-import OptionBar from "../../OptionBar";
-import AddonsList from "../addons/AddonsList";
-import { Image, Button, Chip } from "../../common";
-import { getPizzaImgClass } from "../../../utils/getPizzaImgClass";
 import {
   optionBarPizzaDoughOptions,
   optionBarPizzaSizeOptions,
+  PizzaDough,
+  PizzaSize,
 } from "../../../utils/consts/consts";
+import { useNavigate, useParams } from "react-router-dom";
+import { StoresContext } from "../../StoresProvider";
+import { Image, Button, Chip } from "../../common";
+import { getPizzaImgClass } from "../../../utils/getPizzaImgClass";
+import IngredientsList from "../ingredients/IngredientsList";
+import OptionBar from "../../OptionBar";
+import AddonsList from "../addons/AddonsList";
 import "./style.scss";
+import classes from "../../../utils/classes";
 
 const ProductInfo: FC = () => {
   const { pizzaStore, shoppingCartStore } = useContext(
@@ -32,21 +35,25 @@ const ProductInfo: FC = () => {
   const params = useParams();
   const navigate = useNavigate();
 
-  const currentPizza = pizzaStore.getPizzaByID(params.id);
-  const { id, name, type, ingredients, variants, addons } = currentPizza;
+  const currentPizza = pizzaStore.getPizzaByID(params.id as string);
+
+  const { id, name, type, ingredients, variants, addons } =
+    currentPizza as IPizza;
 
   const [options, setOptions] = useState({
     dough: optionBarPizzaDoughOptions[0].value,
     size: optionBarPizzaSizeOptions[1].value,
   });
+
   const [formedPizza, setFormedPizza] = useState<IPizza>({
     id,
     name,
     type,
     ingredients: JSON.parse(JSON.stringify(ingredients)),
     addons: [],
-    variants: [variants[1]],
+    variants: [variants[0]],
   });
+
   const { size, weight, price, dough, image } = formedPizza.variants[0];
 
   useLayoutEffect(() => {
@@ -59,23 +66,43 @@ const ProductInfo: FC = () => {
     // eslint-disable-next-line
   }, [options]);
 
-  const handleChangeVariant = () => {
+  const handleChangeVariant = useCallback(() => {
     const { dough: firstOption, size: secondOption } = options;
-    let variantId = firstOption + secondOption;
 
-    if (firstOption === 1) {
-      // if dough === 'тонкое'
-      variantId += 1;
-    }
+    const getDough = (option: number) => {
+      switch (option) {
+        case 0:
+          return PizzaDough.TRADITIONAL;
+        case 1:
+          return PizzaDough.THIN;
+      }
+    };
 
-    const currentVariant = variants.filter(
-      (variant) => variant.id === variantId.toString()
-    );
+    const getSize = (option: number) => {
+      switch (option) {
+        case 0:
+          return PizzaSize.SMALL;
+        case 1:
+          return PizzaSize.MEDIUM;
+        case 2:
+          return PizzaSize.BIG;
+      }
+    };
+
+    let dough = getDough(firstOption);
+    let size = getSize(secondOption);
+
+    const currentVariant = variants.filter((variant) => {
+      const isVariantSimilar = variant.dough.toLowerCase() === dough;
+      const isSizeSimilar = variant.size === size;
+
+      return isVariantSimilar && isSizeSimilar;
+    });
 
     setFormedPizza((prev) => {
       return { ...prev, variants: currentVariant };
     });
-  };
+  }, [options]);
 
   const handleChangeDough = useCallback((current: number) => {
     setOptions((prev) => {
@@ -93,9 +120,9 @@ const ProductInfo: FC = () => {
     (addon: IPizzaAddon) => {
       if (formedPizza.addons.includes(addon)) {
         setFormedPizza((prev) => {
-          const newAddons = prev.addons.filter(
-            (current) => current.id !== addon.id
-          );
+          const newAddons = prev.addons
+            .filter((current) => current.id !== addon.id)
+            .sort();
 
           return { ...prev, addons: newAddons };
         });
@@ -104,7 +131,7 @@ const ProductInfo: FC = () => {
       }
 
       setFormedPizza((prev) => {
-        return { ...prev, addons: [...prev.addons, addon] };
+        return { ...prev, addons: [...prev.addons, addon].sort() };
       });
     },
     [formedPizza.addons]
@@ -136,9 +163,9 @@ const ProductInfo: FC = () => {
   );
 
   const handleSubmit = () => {
-    const shoppingCartProducts = shoppingCartStore.pizzas;
+    shoppingCartStore.addProduct(formedPizza);
+    localStorage.setItem(`${currentPizza.id}`, JSON.stringify(currentPizza));
 
-    shoppingCartStore.pizzas = [...shoppingCartProducts, formedPizza];
     navigate(-1);
   };
 
@@ -194,7 +221,7 @@ const ProductInfo: FC = () => {
     // eslint-disable-next-line
   }, [options]);
 
-  const imgClasses = [getPizzaImgClass(size), "form-img"].join(" ");
+  const imgClasses = classes([getPizzaImgClass(size), "form-img"]);
 
   return (
     <div className="form df">

@@ -1,6 +1,16 @@
 .form {
+  background-color: #ffffff;
+  position: absolute;
+  overflow: hidden;
+  border-radius: 20px;
   height: 36vw;
   font-size: 14px;
+  z-index: 9999;
+  animation: product-info-animation 200ms ease-in-out;
+
+  &-img {
+    top: 0.2vw;
+  }
 
   &__left {
     width: 32vw;
@@ -55,6 +65,7 @@
       font-size: 1.6vw;
 
       p {
+        text-transform: lowercase;
         font-size: 1vw;
         padding: 0.4vw 0;
       }
@@ -85,21 +96,42 @@
 }
 
 .pizza-size-medium {
-  top: 0.2vw;
+  // top: 0.2vw;
   transform: scale(1.2);
   z-index: 6;
 }
 
 .pizza-size-greate {
-  top: 0.2vw;
+  // top: 0.2vw;
   transform: scale(1.35);
   z-index: 10;
 }
 
 .product-info-img {
   position: relative;
-  top: 0.2vw;
+  // top: 0.2vw;
   width: 100%;
   height: 100%;
   transition-duration: 200ms;
+}
+
+@keyframes inanimation {
+  0% {
+    transform: scaleX(20px);
+  }
+  100% {
+    transform: scaleX(40px);
+  }
+}
+
+@keyframes product-info-animation {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

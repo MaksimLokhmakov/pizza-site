@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { Image } from "../../../common";
-import minusIcon from "../../../../assets/icons/remove_FILL0_wght400_GRAD0_opsz48.svg";
-import plusIcon from "../../../../assets/icons/add_FILL0_wght400_GRAD0_opsz48.svg";
+import { Image } from "../../../../common";
+import minusIcon from "../../../../../assets/icons/remove_FILL0_wght400_GRAD0_opsz48.svg";
+import plusIcon from "../../../../../assets/icons/add_FILL0_wght400_GRAD0_opsz48.svg";
 import "./style.scss";
 
 interface IngredientsChangesProps {

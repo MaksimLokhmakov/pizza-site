@@ -1,9 +1,16 @@
+import IShoppingCartProduct from "./IShoppingCartProduct";
 import IPizza from "./IPizza";
 
 export default interface IShoppingCartStore {
-  pizzas: IPizza[];
+  products: IShoppingCartProduct[];
 
-  getPizzaPrice: (pizza: IPizza) => number;
-  getPizzasCount: () => number;
-  getPizzasPrice: () => number;
+  addProduct: (pizza: IPizza) => void;
+  removeProduct: (product: IShoppingCartProduct) => void;
+
+  increaseCounter: (product: IShoppingCartProduct) => void;
+  decreaseCounter: (product: IShoppingCartProduct) => void;
+
+  getProductPrice: (product: IShoppingCartProduct) => number;
+  getProductsCount: () => number;
+  getProductsPrice: () => number;
 }

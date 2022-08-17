@@ -35,7 +35,7 @@ const Header: FC = () => {
         <HeaderShoppingCartButton />
       </header>
 
-      <Separator className="header-separator" />
+      {/* <Separator className="header-separator" /> */}
     </>
   );
 };

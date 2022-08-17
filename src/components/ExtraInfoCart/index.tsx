@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { Image, Title } from "../common";
 import classes from "../../utils/classes";
 import "./style.scss";
@@ -32,4 +32,4 @@ const ExtraInfoCart: FC<ExtraInfoCartProps> = ({
   );
 };
 
-export default ExtraInfoCart;
+export default memo(ExtraInfoCart);

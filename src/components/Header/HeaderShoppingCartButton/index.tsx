@@ -12,7 +12,7 @@ const HeaderShoppingCartButton = observer(() => {
   const { shoppingCartStore } = useContext(StoresContext) as IStoresContext;
   const location = useLocation();
 
-  const shoppingCartProductsCount = shoppingCartStore.getPizzasCount();
+  const shoppingCartProductsCount = shoppingCartStore.getProductsCount();
 
   return (
     <Link

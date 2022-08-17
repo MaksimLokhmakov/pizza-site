@@ -1,23 +1,26 @@
 import { FC, ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
 import Portal from "../Portal";
-import Overlay from "../Overlay";
 import "./style.scss";
 
 interface PopupProps {
   children: ReactNode;
-  onClose: () => void;
-  isOpened: boolean;
+  isOpened?: boolean;
 }
 
-const Popup: FC<PopupProps> = ({ children, onClose, isOpened }) => {
-  if (!isOpened) {
-    return null;
-  }
+const Popup: FC<PopupProps> = ({ children, isOpened }) => {
+  const navigation = useNavigate();
+
+  const onClose = () => {
+    navigation(-1);
+  };
 
   return (
     <Portal>
-      <div className="popup df" role="dialog">
-        <Overlay onClick={onClose}>{children}</Overlay>
+      <div>
+        <div className="popup df" role="dialog">
+          {/* <Overlay onClick={onClose}>{children}</Overlay> */}
+        </div>
       </div>
     </Portal>
   );

@@ -6,3 +6,4 @@ export type { default as IPizzaAddon } from "./IPizzaAddon";
 export type { default as IPizzaIngredient } from "./IPizzaIngredient";
 export type { default as IPizzaVariant } from "./IPizzaVariant";
 export type { default as IStoresContext } from "./IStoresContext";
+export type { default as IShoppingCartProduct } from "./IShoppingCartProduct";

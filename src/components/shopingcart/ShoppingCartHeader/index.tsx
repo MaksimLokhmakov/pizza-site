@@ -7,8 +7,8 @@ import "./style.scss";
 
 const ShoppingCartHeader = observer(() => {
   const { shoppingCartStore } = useContext(StoresContext) as IStoresContext;
-  const productsCount = shoppingCartStore.getPizzasCount();
-  const productsTotalPrice = shoppingCartStore.getPizzasPrice().toFixed(2);
+  const productsCount = shoppingCartStore.getProductsCount();
+  const productsTotalPrice = shoppingCartStore.getProductsPrice().toFixed(2);
 
   return (
     <Title className="cart-title">

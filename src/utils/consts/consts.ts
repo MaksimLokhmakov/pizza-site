@@ -23,9 +23,9 @@ export enum PizzaDough {
 }
 
 export enum PizzaSize {
-  SMALL = 25,
-  MEDIUM = 30,
-  BIG = 35,
+  SMALL = 20,
+  MEDIUM = 25,
+  BIG = 30,
 }
 
 export const optionBarPizzaDoughOptions: IOption[] = [

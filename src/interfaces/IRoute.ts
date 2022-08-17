@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ComponentType } from "react";
 
 export enum Routes {
   BASKET_ROUTE = "/busket",
@@ -13,5 +13,5 @@ export enum Routes {
 
 export default interface IRoute {
   path: Routes;
-  element: ReactNode;
+  Component: ComponentType;
 }

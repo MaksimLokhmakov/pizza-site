@@ -6,22 +6,19 @@ interface PortalProps {
 }
 
 const Portal: FC<PortalProps> = ({ children }) => {
-  const conteiner = document.createElement("div");
-  const modalsConteiner = document.getElementById("modals");
-  const body = document.querySelector("body");
+  const modalsConteiner = document.getElementById("modals") as HTMLDivElement;
+  const body = document.body;
 
   useEffect(() => {
-    modalsConteiner?.appendChild(conteiner);
     body?.classList.add("oh");
 
     return () => {
-      modalsConteiner?.removeChild(conteiner);
       body?.classList.remove("oh");
     };
     // eslint-disable-next-line
   }, []);
 
-  return ReactDOM.createPortal(children, conteiner);
+  return ReactDOM.createPortal(children, modalsConteiner);
 };
 
 export default Portal;

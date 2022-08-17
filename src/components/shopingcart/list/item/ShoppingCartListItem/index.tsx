@@ -1,52 +1,46 @@
 import { FC, useContext } from "react";
-import { StoresContext } from "../../../StoresProvider";
-import { Title, Image, Chip, Separator, Button } from "../../../common";
+import { StoresContext } from "../../../../StoresProvider";
+import { Title, Image, Separator, Button } from "../../../../common";
 import IngredientsChanges from "../IngredientsChanges";
-import { IPizza, IStoresContext } from "../../../../interfaces";
-import minusIcon from "../../../../assets/icons/remove_FILL0_wght400_GRAD0_opsz48.svg";
-import editIcon from "../../../../assets/icons/editIcon.svg";
-import plusIcon from "../../../../assets/icons/add_FILL0_wght400_GRAD0_opsz48.svg";
+import SCLIFooter from "../Footer/index";
+import { IPizza, IStoresContext } from "../../../../../interfaces";
+import editIcon from "../../../../../assets/icons/editIcon.svg";
+import plusIcon from "../../../../../assets/icons/add_FILL0_wght400_GRAD0_opsz48.svg";
 import "./style.scss";
+import IShoppingCartProduct from "../../../../../interfaces/IShoppingCartProduct";
 
 interface ShoppingCartListItemProps {
-  pizza: IPizza;
-  price: number;
+  product: IShoppingCartProduct;
 }
 
-const ShoppingCartListItem: FC<ShoppingCartListItemProps> = ({
-  pizza,
-  price,
-}) => {
+const ShoppingCartListItem: FC<ShoppingCartListItemProps> = ({ product }) => {
   const { pizzaStore, shoppingCartStore } = useContext(
     StoresContext
   ) as IStoresContext;
-  const { id, name, variants, addons, ingredients } = pizza;
+  const { id, name, variants, addons, ingredients } = product.product;
 
   const selectedVariant = variants[0];
   const { image, size, dough } = selectedVariant;
 
-  const defaultPizzaIngredients = pizzaStore.getPizzaByID(id).ingredients;
-
+  const defaultPizzaIngredients = (
+    JSON.parse(localStorage.getItem(id) as string) as IPizza
+  ).ingredients;
   const delistedIngredients = defaultPizzaIngredients.filter((ingredient) => {
     const stringIngredients = JSON.stringify(ingredients);
     const stringIngredient = JSON.stringify(ingredient);
 
     return !stringIngredients.includes(stringIngredient);
   });
-
   const delistedIngredientsNames = delistedIngredients.map(
     (ingredient) => ingredient.name
   );
+
   const addonsNames = addons.map((addon) => addon.name);
 
   const handleClickDeleteButton = () => {
-    const newPizzas = shoppingCartStore.pizzas.filter(
-      (pizza) => pizza.id !== id
-    );
-
-    shoppingCartStore.pizzas = newPizzas;
+    localStorage.removeItem(product.product.id);
+    shoppingCartStore.removeProduct(product);
   };
-
   const textSize = () => {
     switch (size) {
       case 25:
@@ -94,27 +88,7 @@ const ShoppingCartListItem: FC<ShoppingCartListItemProps> = ({
 
       <Separator className="item-separator" />
 
-      <footer className="item-footer">
-        <span className="footer-price">{price.toFixed(2)} руб.</span>
-
-        <Chip className="footer-counter" theme="colloring-gray">
-          <Button className="counter-button">
-            <Image
-              src={minusIcon}
-              alt="minusIcon"
-              className="counter-button-img"
-            />
-          </Button>
-          <span>1</span>
-          <Button className="counter-button">
-            <Image
-              src={plusIcon}
-              alt="plusIcon"
-              className="counter-button-img"
-            />
-          </Button>
-        </Chip>
-      </footer>
+      <SCLIFooter product={product} />
     </article>
   );
 };

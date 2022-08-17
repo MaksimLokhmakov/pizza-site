@@ -21,7 +21,11 @@ const IngredientItem = ({
 }: IngredientItemProps) => {
   const { name, required } = ingredient;
   const currentIcon = delisted ? returnIcon : deleteIcon;
-  const classNames = classes(["ingredient-button", { delisted }, !delisted && "aditable"]);
+  const classNames = classes([
+    "ingredient-button",
+    { delisted },
+    !delisted && "aditable",
+  ]);
 
   const handleClick = () => {
     onClick && onClick(ingredient);

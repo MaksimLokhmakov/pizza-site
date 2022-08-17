@@ -20,6 +20,7 @@ const AutoComplite: FC<AutoCompliteProps> = observer(({ visible, style }) => {
 
   const filteredPizzas =
     selectionStore.searchValue &&
+    pizzaStore.pizzas &&
     pizzaStore.pizzas.filter((pizza: IPizza) => {
       const lcName = pizza.name.toLowerCase();
       const lcSearchValue = selectionStore.searchValue.toLowerCase();

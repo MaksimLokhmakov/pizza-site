@@ -1,28 +1,36 @@
-import { FC } from "react";
+import { FC, useRef } from "react";
+import { useScroll } from "../../../hooks";
 import { Title } from "../../common";
 import ExtraInfoCart from "../../ExtraInfoCart";
 import Slider from "../../Slider";
+import { CSSTransition } from "react-transition-group";
 import ShoppingCartHeader from "../ShoppingCartHeader";
-import { observer } from "mobx-react-lite";
 import ShoppingCartItemsList from "../list/ShoppingCartList";
 import ShoppingCartFooter from "../footer/ShoppingCartFooter";
 import "./style.scss";
+
+// TODO: 1. БЕСКОНЕЧНЫЙ СКРОЛЛ ПИЦЦ / СДЕЛАНО
+
+// TODO: 2 ПОДКЛЮЧИТЬ REACT SKELETON ДЛЯ СПИСКА ТОВАРОВ / СДЕЛАНО
+
+// TODO: 3 ИСПРАВИТЬ ВЫБОВ ВАРИАНТА ПИЦЦЫ В МОДАЛЬНОМ ОКНЕ  / СДЕЛАНО
+
+//  TODO: 4 ПРОСМОТРЕТЬ КОД // ПЕРЕПИСАТЬ БОЛЕЕ ЧИТАБЕЛЬНО
 
 // ? temp
 import image from "../../../assets/images/711b5f74b1ad419f9c4e61784474fa1d_760x760.jpeg";
 
 const SideBarModal: FC = () => {
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const childScrollRef = useRef<HTMLElement | null>(null);
+  const { isIntersecting } = useScroll(
+    scrollRef.current as HTMLElement,
+    childScrollRef
+  );
+
   return (
     <div className="shopping-cart">
-      <div
-        style={{
-          overflow: "scroll",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-        }}
-      >
+      <div ref={scrollRef} className="scroll">
         <main className="content">
           <ShoppingCartHeader />
 
@@ -43,7 +51,17 @@ const SideBarModal: FC = () => {
           </Slider>
         </main>
 
-        <ShoppingCartFooter />
+        <ShoppingCartFooter ref={childScrollRef} full />
+
+        {/* //?  footer version that will be mounted when main version is not on screen */}
+        <CSSTransition
+          in={!isIntersecting}
+          timeout={200}
+          classNames="sticky"
+          unmountOnExit
+        >
+          <ShoppingCartFooter sticky />
+        </CSSTransition>
       </div>
     </div>
   );

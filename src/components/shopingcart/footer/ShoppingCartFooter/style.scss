@@ -1,9 +1,7 @@
 .shoppingcart-footer {
   background-color: #ffffff;
   box-shadow: rgb(6 5 50 / 10%) 0px -2px 4px;
-
   padding: 0.8vw 1vw;
-
   margin-top: 1.6vw;
 
   &-button {
@@ -12,6 +10,32 @@
     &-chip {
       padding: 1vw 1vw;
     }
+  }
+}
+
+.sticky {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding: 0.2vw 1vw;
+
+  &-enter {
+    transform: translateY(100px);
+  }
+
+  &-enter-active {
+    transform: translateY(0px);
+    transition-duration: 200ms;
+  }
+
+  &-exit {
+    transform: translateY(0px);
+  }
+
+  &-exit-active {
+    transform: translateY(100px);
+    transition-duration: 200ms;
   }
 }
 

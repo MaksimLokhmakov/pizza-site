@@ -1,4 +1,4 @@
-export { default as AppRouter } from "./AppRouter/index";
+export { default as AppRouter } from "./routers/AppRouter/index";
 export { default as Header } from "./Header/index";
 export { default as SelectionMenu } from "./SelectionMenu/index";
 export { default as ProductCard } from "./products/ProductCard";
